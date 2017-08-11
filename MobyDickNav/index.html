@@ -3,10 +3,11 @@
 <head>
   <title>Moby-Dick</title>
   <meta charset="utf-8">
-  
-  
-  
-  <script src="webcomponents-hi.js"></script>
+
+  <!-- these should be considered polyfill/shim status scripts -->
+  <script src="../webcomponents-hi.js"></script>
+  <!-- end shims -->
+
   <style type="text/css">
     nav ol {
       list-style-type: none;
@@ -104,11 +105,6 @@
         <img height="300" alt="Moby Dick book cover image" src="images/moby-dick-book-cover.jpg"/>
       </div>
 
-    <div id="center">
-   <input id="clickMe" type="button" value="Save for Offline Reading" onclick="sendMessage(['html/c002.html'])" />
-   </div>
-
-
     <details>
       <summary>Table of Contents</summary>
         <nav role="doc-toc">
@@ -138,7 +134,11 @@
      </details>
  </main>
      </div>
-  <script src="html-import-from-nav.js"></script>
-  <script src="book.js"></script>
+
+  <!-- these should be considered polyfill/shim status scripts -->
+  <script src="../html-import-from-nav.js"></script>
+  <script src="../book.js"></script>
+  <!-- end shims -->
+
 </body>
 </html>
