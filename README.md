@@ -85,6 +85,7 @@ See [Moby-Dick](https://dauwhe.github.io/html-first/MobyDickNav/index.html).
   <head>
     <title>Moby-Dick</title>
     <meta charset="utf-8">
+    <link rel="next prefetch" href="html/c001.html" />
   </head>
   <body>
     <main>
