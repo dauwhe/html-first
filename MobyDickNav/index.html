@@ -33,11 +33,11 @@
     
     #nav2 { display: none; }
     
-    .cover, details {
-      margin: 0 auto;
+    .cover, details, #center {
+      margin: 1em auto;
       text-align: center;
     }
-  </style>
+      </style>
   
   
 
@@ -103,9 +103,10 @@
       <div class="cover">
         <img height="300" alt="Moby Dick book cover image" src="images/moby-dick-book-cover.jpg"/>
       </div>
-    </div>
-    
-   <input id="clickMe" type="button" value="clickme" onclick="sendMessage(['html/c002.html'])" />
+
+    <div id="center">
+   <input id="clickMe" type="button" value="Save for Offline Reading" onclick="sendMessage(['html/c002.html'])" />
+   </div>
 
 
     <details>
@@ -136,6 +137,7 @@
        </nav>
      </details>
  </main>
+     </div>
   <script src="html-import-from-nav.js"></script>
   <script src="book.js"></script>
 </body>
