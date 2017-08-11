@@ -77,7 +77,7 @@ Why HTML? Why ```nav```?
 
 ## Examples
 
-See [Moby-Dick](https://dauwhe.github.io/zero-labs/MobyDickNav/MobyDickNav.html).
+See [Moby-Dick](https://dauwhe.github.io/html-first/MobyDickNav/index.html).
 
 ```html
 <!DOCTYPE html>
