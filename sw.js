@@ -13,10 +13,23 @@ self.addEventListener('install', function(event) {
 
 
 self.addEventListener('fetch', function(event) {
+  // Chrome will apparently check for chrome-extension:// URLs...who knew?!
+  if (event.request.url.startsWith('chrome-extension')) return;
   event.respondWith(caches.match(event.request).then(function(response) {
     // caches.match() always resolves
     // but in case of success response will have value
     if (response !== undefined) {
+      // If there's a cached version available, use it, but fetch an update for next time.
+      // So...go fetch...in the background
+      // from: https://jakearchibald.com/2014/offline-cookbook/#stale-while-revalidate
+      fetch(event.request).then(function(networkResponse) {
+        // TODO: This may still be overly aggressive fetching since CSS (etc)
+        // ...are frequently shared across a publication
+        caches.open('web-publication-sub-resources').then(function (cache) {
+          cache.put(event.request, networkResponse.clone());
+        });
+      });
+      // we always return the stale version...code below handles yet uncached
       return response;
     } else {
       // handle additional fetches for things we did not *explicitly* cache
