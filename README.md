@@ -56,10 +56,6 @@ What is the language of the collection of resources?
 
 How do we bind this collection of resources together? We need a list of the primary resources, with a default order. That’s an ordered list of URLs, which can be semantically represented by the HTML ```nav``` element. Define the URL of a web publication to be the URL of this “index” resource which contains the ```nav```. 
 
-## Motivations
-
-Why HTML? Why ```nav```?
-
 But why HTML? Why ```nav```?
 
 1. Design for humans. User agents need to know the primary resources and their default ordering, but so do human readers. Just seeing a list of URLs is not enough; one needs human-readable text describing those URLs. This is the heart of a table of contents—describe the contents and the location both. 
