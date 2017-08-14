@@ -64,7 +64,7 @@ But why HTML? Why ```nav```?
 
 1. Design for humans. User agents need to know the primary resources and their default ordering, but so do human readers. Just seeing a list of URLs is not enough; one needs human-readable text describing those URLs. This is the heart of a table of contents—describe the contents and the location both. 
 
-2. Make authoring easy. HTML is the lingua franca of the web. We shouldn’t require an author to learn JSON to do something that HTML can do.
+2. Make authoring easy. HTML is the lingua franca of the web. We shouldn’t require an author to learn JSON to do something that HTML can do. Also note it's much easier to express a hierarchical structure in HTML than in JSON, largely because you can test HTML in the browser!
 
 3. Don’t repeat yourself. [“Every piece of knowledge must have a single, unambiguous, authoritative representation within a system”](https://en.wikipedia.org/wiki/Don't_repeat_yourself). Separating the human-readable table of contents from some machine-readable means maintaining two lists of resources. 
 
