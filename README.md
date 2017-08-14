@@ -5,16 +5,20 @@ This is a straw-man proposal to use the HTML ```nav``` element to bind together 
 
 ## What is a web publication?
 
-A web publication is a collection of web resources, treated as a single work, which meets user expectations of readability, personalization, simplicity, accessibility, ubiquity, and unity:
+A web publication is a collection of web resources, treated as a single logical resource, which meets user expectations of readability, personalization, simplicity, accessibility, ubiquity, and unity:
 
-1. I can navigate through the publication without clicking links. (Controversial!)
-2. If I leave the publication and go back later, the browser remembers where I was.
+1. I can navigate through the publication without clicking links.
+2. If I leave the publication and go back later, the user agent remembers where I was.
 3. If I search on the page, the scope of the search is the entire web publication.
 4. I can always access the table of contents from the current page.
 5. I can share the Web publication’s URL.
 6. I can read the publication while offline.
-7. I can annotate the publication.
+7. I can annotate the publication, including highlights, notes, and bookmarks.
 8. I can easily change the font, font size, theme, etc.
+9. A web publication should work even with user agents that don't know about web publications (progressive enhancement).
+10. I know that I’m reading a web publication
+11. I know where I am in the publication (the beginning? the middle? the end? which chapter?). 
+
 
 ## The abstract manifest
 
@@ -42,25 +46,33 @@ An abstract manifest must provide a way to associate metadata with a web publica
 
 An abstract manifest must indicate to a user agent that it represents a web publication. 
 
+#### 6. Language
 
+What is the language of the collection of resources? 
 
 
 ## Proposed implementation of the abstract manifest concept
 
 
-How do we bind this collection of resources together? We need a list of the primary resources, with a default order. That’s an ordered list of URLs, which can be semantically represented by the HTML ```nav``` element.
-
-Define the URL of a web publication to be the URL of this “index” resource which contains the ```nav```. 
+How do we bind this collection of resources together? We need a list of the primary resources, with a default order. That’s an ordered list of URLs, which can be semantically represented by the HTML ```nav``` element. Define the URL of a web publication to be the URL of this “index” resource which contains the ```nav```. 
 
 ## Motivations
 
 Why HTML? Why ```nav```?
 
-1. Ease of authoring. HTML is the lingua franca of the web. We shouldn’t require an author to learn JSON to do something that HTML can do.
+But why HTML? Why ```nav```?
 
-2. Accessibility. WCAG requires [multiple ways](https://www.w3.org/TR/2008/REC-WCAG20-20081211/#navigation-mechanisms-mult-loc) to navigate multi-document web sites. A table of contents is a [primary way](https://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/G64) to provide such navigation, and is available to assistive technology. CSS can help clarify the document structure, or help personalize for users (for example, providing high- or low-contrast options). 
+1. Design for humans. User agents need to know the primary resources and their default ordering, but so do human readers. Just seeing a list of URLs is not enough; one needs human-readable text describing those URLs. This is the heart of a table of contents—describe the contents and the location both. 
 
-3. Fallback behaviour. A user agent unfamiliar with web publications would have no idea what to do with a JSON file. But a user can point their browser at an HTML file, and the browser can render it. Even if no new features of web publications are implemented in that browser, or shimmed, the user can read the publication. 
+2. Make authoring easy. HTML is the lingua franca of the web. We shouldn’t require an author to learn JSON to do something that HTML can do.
+
+3. Don’t repeat yourself. [“Every piece of knowledge must have a single, unambiguous, authoritative representation within a system”](https://en.wikipedia.org/wiki/Don't_repeat_yourself). Separating the human-readable table of contents from some machine-readable means maintaining two lists of resources. 
+
+4. Web publications for all. WCAG requires [multiple ways](https://www.w3.org/TR/2008/REC-WCAG20-20081211/#navigation-mechanisms-mult-loc) to navigate multi-document web sites. An HTML table of contents is a [primary way](https://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/G64) to provide such navigation, and is available to assistive technology. CSS can help clarify the document structure, or help personalize for users (for example, providing high- or low-contrast options). WCAG also requires title and language information, which fit naturally in HTML.
+
+5. Web publications everywhere. HTML and CSS can express most of the world’s scripts and languages.
+
+6. Progressive enhancement. A user agent unfamiliar with web publications would have no idea what to do with a JSON file. But a user can point their browser at an HTML file, and the browser can render it. Even if no new features of web publications are implemented in that browser, or shimmed, the user can read the publication. 
 
 
 
