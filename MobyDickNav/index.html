@@ -3,44 +3,46 @@
 <head>
   <title>Moby-Dick</title>
   <meta charset="utf-8">
-
   <!-- these should be considered polyfill/shim status scripts -->
   <script src="../webcomponents-hi.js"></script>
   <!-- end shims -->
 
   <style type="text/css">
+    nav {
+      text-align: center;
+    }
     nav ol {
       list-style-type: none;
       margin-left: 0;
       padding-left: 0;
       font-size: .8em;
     }
-    
+
     nav ol li {
       margin-bottom: .2em;
     }
-    
+
     nav a {
       text-decoration: none;
       color: #777;
     }
-    
+
     .Contents-rw h1 {
       font-size: 1em;
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 4px;
     }
-    
+
     #nav2 { display: none; }
-    
+
     .cover, details, #center {
       margin: 1em auto;
       text-align: center;
     }
-      </style>
-  
-  
+  </style>
+
+
 
 <script type="application/ld+json">
 {
@@ -94,46 +96,42 @@
 }
 </script>
 
-
-
-  
 </head>
 <body>
   <main>
-    <div class="galley-rw">
-      <div class="cover">
-        <img height="300" alt="Moby Dick book cover image" src="images/moby-dick-book-cover.jpg"/>
-      </div>
+    <header class="cover">
+      <h1>Moby Dick</h1>
+      <img height="300" alt="Moby Dick book cover image" src="images/moby-dick-book-cover.jpg"/>
+    </header>
 
-    <details>
-      <summary>Table of Contents</summary>
-        <nav role="doc-toc">
-          <ol>
-            <li><a href="html/title-page.html">Moby-Dick</a></li>
-            <li><a href="html/copyright.html">Copyright</a></li>
-                     <li><a href="html/introduction.html">Etymology.</a></li>
-            <li><a href="html/epigraph.html">Extracts</a></li>
-            <li><a href="html/c001.html#c001">Loomings</a></li>
-            <li><a href="html/c002.html#c002">The Carpet-Bag</a></li>
-            <li><a href="html/c003.html#c003">The Spouter-Inn</a></li>
-            <li><a href="html/c004.html#c004">The Counterpane</a></li>
+    <nav role="doc-toc">
+      <header>Table of Contents</header>
+      <ol>
+        <li><a href="html/title-page.html">Moby-Dick</a></li>
+        <li><a href="html/copyright.html">Copyright</a></li>
+        <li><a href="html/introduction.html">Etymology.</a></li>
+        <li><a href="html/epigraph.html">Extracts</a></li>
+        <li><a href="html/c001.html#c001">Loomings</a></li>
+        <li><a href="html/c002.html#c002">The Carpet-Bag</a></li>
+        <li><a href="html/c003.html#c003">The Spouter-Inn</a></li>
+        <li><a href="html/c004.html#c004">The Counterpane</a></li>
+        <li><a href="html/c005.html#c005">Breakfast</a></li>
+        <li><a href="html/c006.html#c006">The Street</a></li>
+        <li><a href="html/c007.html#c007">The Chapel</a></li>
+        <li><a href="html/c008.html#c008">The Pulpit</a></li>
+        <li><a href="html/c009.html#c090">The Sermon</a></li>
+        <li><a href="html/c010.html#c010">A Bosom Friend</a></li>
 
-<li><a href="html/c005.html#c005">Breakfast</a></li>
-            <li><a href="html/c006.html#c006">The Street</a></li>
-            <li><a href="html/c007.html#c007">The Chapel</a></li>
-            <li><a href="html/c008.html#c008">The Pulpit</a></li>
-            <li><a href="html/c009.html#c090">The Sermon</a></li>
-            <li><a href="html/c010.html#c010">A Bosom Friend</a></li>
-            <li><a href="html/c133.html#c133">The Chase—First Day</a></li>
-            <li><a href="html/c134.html#c134">The Chase—Second Day</a></li>
-            <li><a href="html/c135.html#c135">The Chase.—Third Day</a></li>
-            <li><a href="html/c136.html#c136">Epilogue</a></li>
+        <!-- snip...for now -->
+        <li>...</li>
 
-         </ol>
-       </nav>
-     </details>
- </main>
-     </div>
+        <li><a href="html/c133.html#c133">The Chase—First Day</a></li>
+        <li><a href="html/c134.html#c134">The Chase—Second Day</a></li>
+        <li><a href="html/c135.html#c135">The Chase.—Third Day</a></li>
+        <li><a href="html/c136.html#c136">Epilogue</a></li>
+     </ol>
+    </nav>
+  </main>
 
   <!-- these should be considered polyfill/shim status scripts -->
   <script src="../html-import-from-nav.js"></script>
