@@ -1,23 +1,24 @@
 // register service worker
+function registerServiceWorker() {
+  if ('serviceWorker' in navigator) {
+    // path is relative to where book.js is loaded...
+    navigator.serviceWorker.register('../sw.js', {
+      scope: location.pathname
+    }).then(function(reg) {
 
-if ('serviceWorker' in navigator) {
-  // path is relative to where book.js is loaded...
-  navigator.serviceWorker.register('../sw.js', {
-    scope: location.pathname
-  }).then(function(reg) {
+      if(reg.installing) {
+        console.log('Service worker installing');
+      } else if(reg.waiting) {
+        console.log('Service worker installed');
+      } else if(reg.active) {
+        console.log('Service worker active');
+      }
 
-    if(reg.installing) {
-      console.log('Service worker installing');
-    } else if(reg.waiting) {
-      console.log('Service worker installed');
-    } else if(reg.active) {
-      console.log('Service worker active');
-    }
-
-  }).catch(function(error) {
-    // registration failed
-    console.log('Registration failed with ' + error);
-  });
+    }).catch(function(error) {
+      // registration failed
+      console.error('Registration failed with ' + error);
+    });
+  }
 }
 
 var button = document.createElement('button');
@@ -25,9 +26,11 @@ button.innerText = 'Keep This Book (offline)';
 
 // populate the cache with the bits from the nav
 button.onclick = function() {
+  registerServiceWorker();
   // create a list of primary publication resources
   var spine = document.querySelectorAll("nav[role='doc-toc'] a");
-  var manifestArray = [];
+  // start by caching the Table of Contents
+  var manifestArray = ['./'];
   for (var spineItem of spine) {
     manifestArray.push(spineItem.href)
   };
