@@ -1,16 +1,10 @@
 self.addEventListener('install', function(event) {
-/*  event.waitUntil(
-    caches.open('v5').then(function(cache) {
-      return cache.addAll([
-        // TODO: populate the cache from the page...not the SW
-        'MobyDickNav/css/mobydick.css',
-        'MobyDickNav/html/c001.html'
-      ]);
-    })
-  );*/
+  event.waitUntil(self.skipWaiting());
 });
 
-
+self.addEventListener('activate', (event) => {
+  event.waitUntil(self.clients.claim());
+});
 
 self.addEventListener('fetch', function(event) {
   // Chrome will apparently check for chrome-extension:// URLs...who knew?!

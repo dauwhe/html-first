@@ -6,8 +6,10 @@ function registerServiceWorker() {
       scope: location.pathname
     }).then(function(reg) {
 
+      // TODO: understand these states better, so fauxFrame runs correctly
       if(reg.installing) {
         console.log('Service worker installing');
+        fauxFramePrimaryResources();
       } else if(reg.waiting) {
         console.log('Service worker installed');
       } else if(reg.active) {
@@ -21,23 +23,30 @@ function registerServiceWorker() {
   }
 }
 
+function fauxFramePrimaryResources() {
+  console.log('faux framing');
+  var spine = document.querySelectorAll("nav[role='doc-toc'] a");
+  // start by caching the Table of Contents
+  var manifestArray = ['./'];
+  for (var spineItem of spine) {
+    manifestArray.push(spineItem.href)
+  }
+
+  // Use hidden iframes to "force" browser to request all the things...
+  manifestArray.forEach((item) => {
+    let iframe = document.createElement('iframe');
+    iframe.src = item;
+    iframe.style.display = 'none';
+    document.body.append(iframe);
+  });
+}
+
 var button = document.createElement('button');
 button.innerText = 'Keep This Book (offline)';
 
 // populate the cache with the bits from the nav
 button.onclick = function() {
   registerServiceWorker();
-  // create a list of primary publication resources
-  var spine = document.querySelectorAll("nav[role='doc-toc'] a");
-  // start by caching the Table of Contents
-  var manifestArray = ['./'];
-  for (var spineItem of spine) {
-    manifestArray.push(spineItem.href)
-  };
-  // add them all to the cache
-  caches.open('web-publication').then((cache) => {
-    cache.addAll(manifestArray).then(console.log);
-  });
 }
 // TODO: add a .prepend() shim...this doesn't work in Edge...yet?
 document.body.prepend(button);
