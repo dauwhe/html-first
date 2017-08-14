@@ -64,7 +64,7 @@ But why HTML? Why ```nav```?
 
 1. Design for humans. User agents need to know the primary resources and their default ordering, but so do human readers. Just seeing a list of URLs is not enough; one needs human-readable text describing those URLs. This is the heart of a table of contents—describe the contents and the location both. 
 
-2. Make authoring easy. HTML is the lingua franca of the web. We shouldn’t require an author to learn JSON to do something that HTML can do. Also note it's much easier to express a hierarchical structure in HTML than in JSON, largely because you can test HTML in the browser!
+2. Make authoring easy. HTML is the lingua franca of the web, a language we already know. It's easy to find tools and syntax checkers. It's easy to see what you're doing, even with tricky things like nesting lists (and yes, good tables of contents are often hierarchical). 
 
 3. Don’t repeat yourself. [“Every piece of knowledge must have a single, unambiguous, authoritative representation within a system”](https://en.wikipedia.org/wiki/Don't_repeat_yourself). Separating the human-readable table of contents from some machine-readable means maintaining two lists of resources. 
 
@@ -72,7 +72,7 @@ But why HTML? Why ```nav```?
 
 5. Web publications everywhere. HTML and CSS can express most of the world’s scripts and languages.
 
-6. Progressive enhancement. A user agent unfamiliar with web publications would have no idea what to do with a JSON file. But a user can point their browser at an HTML file, and the browser can render it. Even if no new features of web publications are implemented in that browser, or shimmed, the user can read the publication. 
+6. Progressive enhancement. Basing web publications on ```nav``` allows existing user agents to make web publications functional, and provides an easy path from existing content which has tables of contents (for example, all the EPUB3s in the world). A user can point their browser at an HTML file, and the browser can render it. Even if no new features of web publications are implemented in that browser, or shimmed, the user can read the publication. 
 
 
 
