@@ -39,10 +39,22 @@ What is the set of information necessary for a user agent to process and present
 
 
 
-## Proposed Implementation
+## How and Why?
 
 
 How do we bind this collection of resources together? We need a list of the primary resources, with a default order. That’s an ordered list of URLs, which can be semantically represented by the HTML ```nav``` element. Define the URL of a web publication to be the URL of this “index” resource which contains the ```nav```. 
+
+
+```html
+        <nav role="doc-toc">
+          <ol>
+            <li><a href="html/c001.html">Loomings</a></li>
+            <li><a href="html/c002.html">The Carpet-Bag</a></li>
+            <li><a href="html/c003.html">The Spouter-Inn</a></li>
+            <li><a href="html/c004.html">The Counterpane</a></li>
+          </ol>
+        </nav>
+```
 
 But why HTML? Why ```nav```?
 
@@ -52,7 +64,7 @@ But why HTML? Why ```nav```?
 
 3. **Don’t repeat yourself**. [“Every piece of knowledge must have a single, unambiguous, authoritative representation within a system”](https://en.wikipedia.org/wiki/Don't_repeat_yourself). Separating the human-readable table of contents from some machine-readable means maintaining two lists of resources. 
 
-4. **Web publications for all**. WCAG requires [multiple ways](https://www.w3.org/TR/2008/REC-WCAG20-20081211/#navigation-mechanisms-mult-loc) to navigate multi-document web sites. An HTML table of contents is a [primary way](https://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/G64) to provide such navigation, and is available to assistive technology. CSS can help clarify the document structure, or help personalize for users (for example, providing high- or low-contrast options). WCAG also requires title and language information, which fit naturally in HTML.
+4. **Web publications for all**. One reason for focusing on ```nav``` as the glue that holds a publication together is because of the need for a table of contents that is available to humans and assistive technology, and that supports the visual nuance provided by CSS, and the internationalization features of HTML. WCAG requires [multiple ways](https://www.w3.org/TR/2008/REC-WCAG20-20081211/#navigation-mechanisms-mult-loc) to navigate multi-document web sites. An HTML table of contents is a [primary way](https://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/G64) to provide such navigation, and is available to assistive technology. CSS can help clarify the document structure, or help personalize for users (for example, providing high- or low-contrast options). WCAG also requires title and language information, which fit naturally in HTML.
 
 5. **Web publications everywhere**. HTML and CSS can express most of the world’s scripts and languages.
 
@@ -102,11 +114,6 @@ But why HTML? Why ```nav```?
 ### Demo Book 
 
 See [Moby-Dick](https://dauwhe.github.io/html-first/MobyDickNav/index.html). This web publication uses a [Service Worker](https://w3c.github.io/ServiceWorker/v1/) to enable offline reading.
-
-
-## Accessibility
-
-One reason for focusing on ```nav``` as the glue that holds a publication together is because of the need for a table of contents that is available to humans and assistive technology, and that supports the visual nuance provided by CSS, and the internationalization features of HTML. 
 
 
 ## The State of the Art
