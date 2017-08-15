@@ -3,7 +3,8 @@ function registerServiceWorker() {
   if ('serviceWorker' in navigator) {
     // path is relative to where book.js is loaded...
     navigator.serviceWorker.register('../sw.js', {
-      scope: location.pathname
+      // strip any file name, so we're scoping for this spot in the hierarchy
+      scope: './'
     }).then(function(reg) {
 
       // TODO: understand these states better, so fauxFrame runs correctly
