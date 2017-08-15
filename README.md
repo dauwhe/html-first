@@ -1,11 +1,11 @@
 # Web Publications TOC Explainer
 
-We propose to use the HTML ```nav``` element to bind together web resources into a web publication. Such a publication is defined by an ordered list of links, and HTML is ideally suited to create such a list that is understandable by both human readers and machines. Basing web publications on a table of contents allows for easy authoring, a natural upgrade path from existing web books and EPUBs, avoids duplication, and helps meet accessibility and usability requirements.
+We propose to use the HTML ```nav``` element to bind together web resources into a web publication. Such a publication is characterized by an ordered list of links, and HTML is ideally suited to create such a list that is understandable by both human readers and machines. Basing web publications on a table of contents allows for easy authoring, a natural upgrade path from existing web books and EPUBs, avoids duplication, helps meet accessibility and usability requirements, and is functional with today’s web.
 
 
 ## What is a web publication?
 
-A web publication is a collection of web resources, treated as a [single logical resource](http://w3c.github.io/dpub-pwp-ucr/index.html#single), which meets user expectations of readability, personalization, simplicity, accessibility, ubiquity, and unity:
+A web publication is a collection of web resources, treated as a [single logical resource](http://w3c.github.io/dpub-pwp-ucr/index.html#single), which meets user expectations of readability, personalization, and accessibility:
 
 1. I can navigate through the publication without clicking links.
 2. If I leave the publication and go back later, the user agent remembers where I was.
@@ -15,7 +15,7 @@ A web publication is a collection of web resources, treated as a [single logical
 6. I can read the publication while offline.
 7. I can annotate the publication, including highlights, notes, and bookmarks.
 8. I can easily change the font, font size, theme, etc.
-9. A web publication should work even with user agents that don't know about web publications (progressive enhancement).
+9. I can read a web publication even with user agents that don’t know about web publications (progressive enhancement).
 10. I know that I’m reading a web publication.
 11. I know where I am in the publication (the beginning? the middle? the end? which chapter?). 
 
@@ -60,7 +60,7 @@ But why HTML? Why ```nav```?
 
 1. **Design for humans**. User agents need to know the primary resources and their default ordering, but so do human readers. Just seeing a list of URLs is not enough; one needs human-readable text describing those URLs. This is the heart of a table of contents—describe the contents and the location both. 
 
-2. **Make authoring easy**. HTML is the lingua franca of the web, a language we already know. It's easy to find tools and syntax checkers. It's easy to see what you're doing, even with tricky things like nesting lists (and yes, good tables of contents are often hierarchical). 
+2. **Make authoring easy**. HTML is the lingua franca of the web, a language we already know. It’s easy to find tools and syntax checkers. It’s easy to see what you’re doing, even with tricky things like nesting lists (and yes, good tables of contents are often hierarchical). 
 
 3. **Don’t repeat yourself**. [“Every piece of knowledge must have a single, unambiguous, authoritative representation within a system”](https://en.wikipedia.org/wiki/Don't_repeat_yourself). Separating the human-readable table of contents from some machine-readable means maintaining two lists of resources. 
 
