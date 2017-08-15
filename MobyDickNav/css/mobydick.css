@@ -329,4 +329,9 @@ div.galley-rw {
 margin-bottom: 20vh;
 }
 
+figure img {
+object-fit: contain;
+max-width: 100%;
+}
+
 
