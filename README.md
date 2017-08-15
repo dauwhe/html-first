@@ -1,11 +1,11 @@
 # Web Publications TOC Explainer
 
-This is a straw-man proposal to use the HTML ```nav``` element to bind together web resources into a publication. Think of this as commentary on the ongoing work of the W3C Publishing Working Group, as it happens in the [Web Publications Repo](https://www.github.com/w3c/wpub)
+We propose to use the HTML ```nav``` element to bind together web resources into a web publication. Such a publication is defined by an ordered list of links, and HTML is ideally suited to create such a list that is understandable by both human readers and machines. Basing web publications on a table of contents allows for easy authoring, a natural upgrade path from existing web books and EPUBs, avoids duplication, and helps meet accessibility requirements.
 
 
 ## What is a web publication?
 
-A web publication is a collection of web resources, treated as a single logical resource, which meets user expectations of readability, personalization, simplicity, accessibility, ubiquity, and unity:
+A web publication is a collection of web resources, treated as a [single logical resource](http://w3c.github.io/dpub-pwp-ucr/index.html#single), which meets user expectations of readability, personalization, simplicity, accessibility, ubiquity, and unity:
 
 1. I can navigate through the publication without clicking links.
 2. If I leave the publication and go back later, the user agent remembers where I was.
@@ -16,59 +16,45 @@ A web publication is a collection of web resources, treated as a single logical 
 7. I can annotate the publication, including highlights, notes, and bookmarks.
 8. I can easily change the font, font size, theme, etc.
 9. A web publication should work even with user agents that don't know about web publications (progressive enhancement).
-10. I know that I’m reading a web publication
+10. I know that I’m reading a web publication.
 11. I know where I am in the publication (the beginning? the middle? the end? which chapter?). 
 
 
-## The abstract manifest
+## What Information Do We Need?
 
-An abstract manifest is the set of information necessary for a user agent to process and present a web publication.
+What is the set of information necessary for a user agent to process and present a web publication?
 
-### Information in the abstract manifest
+1. **Title**. This identifies the title of the web publication, which can be distinct from any titles associated with the constituent resources.
 
-#### 1. Title
+2. **Identifier**. A unique identifier for the web publication. The identifier chosen will likely differ across use cases—for example, book publishers would likely use ```urn:isbn```. 
 
-This identifies the title of the web publication, which can be distinct from any titles associated with the constituent resources.
+3. **List of Primary Resources**. An abstract manifest must provide a list of primary resources, and the default ordering of those resources. 
 
-#### 2. Identifier
+4. **Metadata**. An abstract manifest must provide a way to associate metadata with a web publication. Any particular piece of metadata is, however, optional.
 
-A unique identifier for the web publication. The identifier chosen will likely differ across use cases—for example, book publishers would likely use ```urn:isbn```. 
+5. **“Publication-ness”**. An abstract manifest must indicate to a user agent that it represents a web publication. 
 
-#### 3. List of Primary Resources
-
-An abstract manifest must provide a list of primary resources, and the default ordering of those resources. 
-
-#### 4. Metadata
-
-An abstract manifest must provide a way to associate metadata with a web publication. Any particular piece of metadata is, however, optional.
-
-#### 5. “Publication-ness”
-
-An abstract manifest must indicate to a user agent that it represents a web publication. 
-
-#### 6. Language
-
-What is the language of the collection of resources? 
+6. **Language**. What is the language of the collection of resources? 
 
 
-## Proposed implementation of the abstract manifest concept
+## Proposed Implementation
 
 
 How do we bind this collection of resources together? We need a list of the primary resources, with a default order. That’s an ordered list of URLs, which can be semantically represented by the HTML ```nav``` element. Define the URL of a web publication to be the URL of this “index” resource which contains the ```nav```. 
 
 But why HTML? Why ```nav```?
 
-1. Design for humans. User agents need to know the primary resources and their default ordering, but so do human readers. Just seeing a list of URLs is not enough; one needs human-readable text describing those URLs. This is the heart of a table of contents—describe the contents and the location both. 
+1. **Design for humans**. User agents need to know the primary resources and their default ordering, but so do human readers. Just seeing a list of URLs is not enough; one needs human-readable text describing those URLs. This is the heart of a table of contents—describe the contents and the location both. 
 
-2. Make authoring easy. HTML is the lingua franca of the web, a language we already know. It's easy to find tools and syntax checkers. It's easy to see what you're doing, even with tricky things like nesting lists (and yes, good tables of contents are often hierarchical). 
+2. **Make authoring easy**. HTML is the lingua franca of the web, a language we already know. It's easy to find tools and syntax checkers. It's easy to see what you're doing, even with tricky things like nesting lists (and yes, good tables of contents are often hierarchical). 
 
-3. Don’t repeat yourself. [“Every piece of knowledge must have a single, unambiguous, authoritative representation within a system”](https://en.wikipedia.org/wiki/Don't_repeat_yourself). Separating the human-readable table of contents from some machine-readable means maintaining two lists of resources. 
+3. **Don’t repeat yourself**. [“Every piece of knowledge must have a single, unambiguous, authoritative representation within a system”](https://en.wikipedia.org/wiki/Don't_repeat_yourself). Separating the human-readable table of contents from some machine-readable means maintaining two lists of resources. 
 
-4. Web publications for all. WCAG requires [multiple ways](https://www.w3.org/TR/2008/REC-WCAG20-20081211/#navigation-mechanisms-mult-loc) to navigate multi-document web sites. An HTML table of contents is a [primary way](https://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/G64) to provide such navigation, and is available to assistive technology. CSS can help clarify the document structure, or help personalize for users (for example, providing high- or low-contrast options). WCAG also requires title and language information, which fit naturally in HTML.
+4. **Web publications for all**. WCAG requires [multiple ways](https://www.w3.org/TR/2008/REC-WCAG20-20081211/#navigation-mechanisms-mult-loc) to navigate multi-document web sites. An HTML table of contents is a [primary way](https://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/G64) to provide such navigation, and is available to assistive technology. CSS can help clarify the document structure, or help personalize for users (for example, providing high- or low-contrast options). WCAG also requires title and language information, which fit naturally in HTML.
 
-5. Web publications everywhere. HTML and CSS can express most of the world’s scripts and languages.
+5. **Web publications everywhere**. HTML and CSS can express most of the world’s scripts and languages.
 
-6. Progressive enhancement. Basing web publications on ```nav``` allows existing user agents to make web publications functional, and provides an easy path from existing content which has tables of contents (for example, all the EPUB3s in the world). A user can point their browser at an HTML file, and the browser can render it. Even if no new features of web publications are implemented in that browser, or shimmed, the user can read the publication. 
+6. **Progressive enhancement**. Basing web publications on ```nav``` allows existing user agents to make web publications functional, and provides an easy path from existing content which has tables of contents (for example, all the EPUB3s in the world). A user can point their browser at an HTML file, and the browser can render it. Even if no new features of web publications are implemented in that browser, or shimmed, the user can read the publication. 
 
 
 
@@ -85,7 +71,7 @@ But why HTML? Why ```nav```?
 
 ## Examples
 
-See [Moby-Dick](https://dauwhe.github.io/html-first/MobyDickNav/index.html).
+### Simple Code Example
 
 ```html
 <!DOCTYPE html>
@@ -110,6 +96,11 @@ See [Moby-Dick](https://dauwhe.github.io/html-first/MobyDickNav/index.html).
 </html>
 
 ```
+
+### Demo Book 
+
+See [Moby-Dick](https://dauwhe.github.io/html-first/MobyDickNav/index.html). This web publication uses a [Service Worker](https://w3c.github.io/ServiceWorker/v1/) to enable offline reading.
+
 
 ## Accessibility
 
@@ -136,4 +127,8 @@ Web publications are based on the [origin](https://tools.ietf.org/html/rfc6454) 
 ## The State of the Art
 
 We’ve drawn inspiration from Jeremy Keith’s [Resilient Web Design](https://resilientwebdesign.com). This book is a beautiful example of a "bookish" experience on the web now, with good use of link relations, simple design, and beautifully clear, semantic HTML. The subject of the book is also on-topic. 
+
+## Feedback
+
+[Web Publications](https://www.github.com/w3c/wpub) are being discussed by the W3C Publishing Working Group.
 
