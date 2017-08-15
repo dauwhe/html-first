@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html 📖 lang="en">
+<html 📖 lang="en" vocab="http://schema.org/" typeof="Book">
 <head>
-  <title>Moby-Dick</title>
+  <title property="name">Moby-Dick</title>
   <meta charset="utf-8">
+
+  <meta name="bookFormat" content="https://www.w3.org/TR/wpub-vocab/#WebPublication">
+  <meta name="description" content="Project Gutenberg edition of Moby-Dick">
 
   <style type="text/css">
     nav {
@@ -39,66 +42,14 @@
     }
   </style>
 
-
-
-<script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Book",
-  "accessibilityAPI": "ARIA",
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "largePrint/CSSEnabled",
-    "highContrast/CSSEnabled",
-    "resizeText/CSSEnabled"
-  ],
-  "accessibilityHazard": [
-    "noFlashing",
-    "noMotionSimulation",
-    "noSound"
-  ],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "reviewCount": "0"
-  },
-  "bookFormat": "EBook/e0",
-  "copyrightHolder": {
-    "@type": "Organization",
-    "name": "Harper & Row"
-  },
-  "author": "Herman Melville",
-  "datePublished": "1851-10-19",
-  "image": "moby-dick-book-cover.jpg",
-  "offers": {
-    "@type": "Offer",
-    "availability": "https://hachettebookgroup.biz/BuyMe?isbn=9780316123456",
-    "price": "6.99",
-    "priceCurrency": "USD"
-  },
-  "copyrightYear": "1851",
-  "description": "Project Gutenberg edition of Moby-Dick",
-  "genre": "Literary Fiction",
-  "inLanguage": "en-US",
-  "isFamilyFriendly": "true",
-  "isbn": "9780316123456",
-  "name": "Moby-Dick",
-  "numberOfPages": "000",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Harper & Row"
-  }
-}
-</script>
-
 </head>
 <body>
   <main>
     <header class="cover">
-      <h1>Moby Dick</h1>
-      <img height="300" alt="Moby Dick book cover image" src="images/moby-dick-book-cover.jpg"/>
+      <h1 property="name">Moby-Dick</h1>
+      or <h2 property="alternateName">The Whale</h2>
+      by <h4 propert="author">Herman Melville</h4>
+      <img property="image" height="300" alt="Moby Dick book cover image" src="images/moby-dick-book-cover.jpg"/>
     </header>
 
     <nav role="doc-toc">
@@ -130,6 +81,11 @@
     </nav>
   </main>
 
+  <footer>
+    <div property="publisher" typeof="Organization">
+      Publisher: <span property="name">Harper &amp; Row</span>
+    </div>
+  </footer>
   <!-- these should be considered polyfill/shim status scripts -->
   <script src="../book.js"></script>
   <!-- end shims -->
