@@ -93,6 +93,7 @@ But why HTML? Why ```nav```?
   <head>
     <title>Moby-Dick</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
     <link rel="next prefetch" href="html/c001.html" />
   </head>
   <body>
