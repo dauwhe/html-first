@@ -1,6 +1,6 @@
 # Web Publications TOC Explainer
 
-We propose to use the HTML ```nav``` element to bind together web resources into a web publication. Such a publication is defined by an ordered list of links, and HTML is ideally suited to create such a list that is understandable by both human readers and machines. Basing web publications on a table of contents allows for easy authoring, a natural upgrade path from existing web books and EPUBs, avoids duplication, and helps meet accessibility requirements.
+We propose to use the HTML ```nav``` element to bind together web resources into a web publication. Such a publication is defined by an ordered list of links, and HTML is ideally suited to create such a list that is understandable by both human readers and machines. Basing web publications on a table of contents allows for easy authoring, a natural upgrade path from existing web books and EPUBs, avoids duplication, and helps meet accessibility and usability requirements.
 
 
 ## What is a web publication?
@@ -28,13 +28,15 @@ What is the set of information necessary for a user agent to process and present
 
 2. **Identifier**. A unique identifier for the web publication. The identifier chosen will likely differ across use cases—for example, book publishers would likely use ```urn:isbn```. 
 
-3. **List of Primary Resources**. An abstract manifest must provide a list of primary resources, and the default ordering of those resources. 
+3. **Language**. What is the language of the collection of resources? 
 
-4. **Metadata**. An abstract manifest must provide a way to associate metadata with a web publication. Any particular piece of metadata is, however, optional.
+4. **List of Primary Resources**. We must provide a list of primary resources, and the default ordering of those resources. 
 
-5. **“Publication-ness”**. An abstract manifest must indicate to a user agent that it represents a web publication. 
+5. **Identity as a Web Publication**. We must indicate to a user agent that this collection of resources represents a web publication. 
 
-6. **Language**. What is the language of the collection of resources? 
+6. **Metadata**. We should provide a way to associate metadata with a web publication. Any particular piece of metadata is, however, optional.
+
+
 
 
 ## Proposed Implementation
@@ -54,7 +56,7 @@ But why HTML? Why ```nav```?
 
 5. **Web publications everywhere**. HTML and CSS can express most of the world’s scripts and languages.
 
-6. **Progressive enhancement**. Basing web publications on ```nav``` allows existing user agents to make web publications functional, and provides an easy path from existing content which has tables of contents (for example, all the EPUB3s in the world). A user can point their browser at an HTML file, and the browser can render it. Even if no new features of web publications are implemented in that browser, or shimmed, the user can read the publication. 
+6. **Progressive enhancement**. Basing web publications on ```nav``` allows existing user agents to make web publications functional, and provides an easy path from existing content which has tables of contents (for example, every EPUB3 in the world). A user can point their browser at an HTML file, and the browser can render it. Even if no new features of web publications are implemented in that browser, or shimmed, the user can read the publication. 
 
 
 
@@ -106,23 +108,6 @@ See [Moby-Dick](https://dauwhe.github.io/html-first/MobyDickNav/index.html). Thi
 
 One reason for focusing on ```nav``` as the glue that holds a publication together is because of the need for a table of contents that is available to humans and assistive technology, and that supports the visual nuance provided by CSS, and the internationalization features of HTML. 
 
-
-## Offline
-
-Service workers can allow offline reading of web resources. Script can easily create a list of primary resources to pass to a service worker, but obtaining a list of secondary resources is more problematic. This is where we hope for help from browsers, as authoring an exhaustive list of fonts, images, CSS files, etc. is no fun. 
-
-## Security
-
-Web publications are based on the [origin](https://tools.ietf.org/html/rfc6454) model of the web. In particular, a resource in a web publication should be same-origin to the index resource, or available to that origin via CORS. 
-
-[To do: Say something intelligent about CSP.]
-
-
-
-## Experimentation
-
-1. One way to create a single entity out of multiple HTML documents is to use the now-deprecated HTML Imports. We hope that some similar mechanism will come to the web platform soon, but there is still support (and a polyfill) for HTML imports. 
-2. Shadow DOM might be useful for two things. One is encapsulating styles of imported components. It might also [help allow authors](https://tabatkins.github.io/specs/css-shadow-parts/) to expose hooks for readers to personalize publications, while still retaining control of certain critical design elements. 
 
 ## The State of the Art
 
