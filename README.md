@@ -114,7 +114,9 @@ But why HTML? Why ```nav```?
 
 ### Demo Book 
 
-See [Moby-Dick](https://dauwhe.github.io/html-first/MobyDickNav/index.html). This web publication uses a [Service Worker](https://w3c.github.io/ServiceWorker/v1/) to enable offline reading.
+See [Moby-Dick](https://dauwhe.github.io/html-first/MobyDickNav/index.html). 
+
+1. A [Service Worker](https://w3c.github.io/ServiceWorker/v1/) enables offline reading. Note that it caches secondary resources (CSS, scripts, images) without having an explicit list! 
 
 
 ## The State of the Art
