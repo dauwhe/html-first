@@ -3,7 +3,7 @@
 We propose to use the HTML ```nav``` element to bind together web resources into a web publication. Such a publication is characterized by an ordered list of links, and HTML is ideally suited to create such a list that is understandable by both human readers and machines. Basing web publications on a table of contents allows for easy authoring, a natural upgrade path from existing web books and EPUBs, avoids duplication, helps meet accessibility and usability requirements, and is functional with today’s web.
 
 
-## What is a web publication?
+## What is a Web Publication?
 
 A web publication is a collection of web resources, treated as a [single logical resource](http://w3c.github.io/dpub-pwp-ucr/index.html#single), which meets user expectations of readability, personalization, and accessibility:
 
@@ -11,7 +11,7 @@ A web publication is a collection of web resources, treated as a [single logical
 2. If I leave the publication and go back later, the user agent remembers where I was.
 3. If I search on the page, the scope of the search is the entire web publication.
 4. I can always access the table of contents from the current page.
-5. I can share the Web publication’s URL.
+5. I can share the web publication’s URL.
 6. I can read the publication while offline.
 7. I can annotate the publication, including highlights, notes, and bookmarks.
 8. I can easily change the font, font size, theme, etc.
