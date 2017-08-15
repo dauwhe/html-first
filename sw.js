@@ -36,15 +36,3 @@ self.addEventListener('fetch', function(event) {
     }
   }));
 });
-
-
-// TODO: complete experiment of message-based cache population
-// TODO: alternatively use code in book.js to do the cache population
-self.addEventListener('message', function (event) {
-  console.log('postMessage received', event.data);
-  event.waitUntil(
-  caches.open('v5').then(function(cache) {
-    // TODO: use the message-based info to add to the cache
-     return cache.add('MobyDickNav/html/c002.html')
-  }));
-});
