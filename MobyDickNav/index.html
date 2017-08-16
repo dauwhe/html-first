@@ -26,17 +26,19 @@
       color: #777;
     }
 
-    .Contents-rw h1 {
+    nav h2 {
       font-size: 1em;
-      font-weight: bold;
+      font-weight: normal;
       text-transform: uppercase;
       letter-spacing: 4px;
     }
 
-    #nav2 { display: none; }
-
     body {
       text-align: center;
+    }
+    
+    div[property=publisher] {
+    margin-bottom: 1em;
     }
   </style>
 
@@ -49,11 +51,14 @@
       <h1 property="name">Moby-Dick</h1>
       or <h2 property="alternateName">The Whale</h2>
       by <h4 property="author">Herman Melville</h4>
+      <div property="publisher" typeof="Organization">
+      <span property="name">Harper &amp; Brothers, Publishers</span>
+      </div>
       <img property="image" height="300" alt="Moby Dick book cover image" src="images/moby-dick-book-cover.jpg"/>
     </header>
 
     <nav role="doc-toc">
-      <header>Table of Contents</header>
+      <h2>Table of Contents</h2>
       <ol>
         <li><a href="html/title-page.html">Moby-Dick</a></li>
         <li><a href="html/copyright.html">Copyright</a></li>
@@ -82,9 +87,7 @@
   </main>
 
   <footer>
-    <div property="publisher" typeof="Organization">
-      Publisher: <span property="name">Harper &amp; Row</span>
-    </div>
+   
   </footer>
   <!-- these should be considered polyfill/shim status scripts -->
   <script src="../book.js"></script>

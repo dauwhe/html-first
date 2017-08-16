@@ -61,7 +61,7 @@ message.innerText = 'You have kept a copy of this Web Publication.';
 
 let toolbar = document.createElement('nav');
 toolbar.id = 'web-publication-toolbar';
-toolbar.style.border = '1px solid blue';
+toolbar.style.border = '0px solid blue';
 toolbar.style.display = 'none';
 toolbar.append(button, message);
 
