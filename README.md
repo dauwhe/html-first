@@ -103,6 +103,11 @@ See [Moby-Dick](https://dauwhe.github.io/html-first/MobyDickNav/index.html).
 
 1. A [Service Worker](https://w3c.github.io/ServiceWorker/v1/) enables offline reading. Note that it caches secondary resources (CSS, scripts, images) without having an explicit list!
 
+To run the demo locally, we recommend [http-server](https://www.npmjs.com/package/http-server) with server-side caching shut off:
+```sh
+$ npm i -g http-server
+$ http-server . -c-1
+```
 
 ## The State of the Art
 
