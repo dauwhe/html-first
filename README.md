@@ -97,13 +97,15 @@ But why HTML? Why `nav`?
 </html>
 ```
 
-### Demo Book
+### Demo Books
 
-See [Moby-Dick](https://dauwhe.github.io/html-first/MobyDickNav/index.html).
+1. [Moby-Dick](https://dauwhe.github.io/html-first/MobyDickNav/index.html).
 
-1. A [Service Worker](https://w3c.github.io/ServiceWorker/v1/) enables offline reading. Note that it caches secondary resources (CSS, scripts, images) without having an explicit list!
+2. [The Theory of Heat Radiation](https://dauwhe.github.io/html-first/HeatRadiation)
 
-To run the demo locally, we recommend [http-server](https://www.npmjs.com/package/http-server) with server-side caching shut off:
+A [Service Worker](https://w3c.github.io/ServiceWorker/v1/) enables offline reading. Note that it caches secondary resources (CSS, scripts, images, fonts referenced from CSS) without having an explicit list!
+
+To run the demos locally, we recommend [http-server](https://www.npmjs.com/package/http-server) with server-side caching shut off:
 ```sh
 $ npm i -g http-server
 $ http-server . -c-1
