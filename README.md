@@ -101,7 +101,7 @@ But why HTML? Why `nav`?
 
 1. [Moby-Dick](https://dauwhe.github.io/html-first/MobyDickNav/index.html).
 
-2. [The Theory of Heat Radiation](https://dauwhe.github.io/html-first/HeatRadiation)
+2. [The Theory of Heat Radiation](https://dauwhe.github.io/html-first/HeatRadiation). This book includes MathML, and has a nested table of contents to indicate the Part/Chapter structure. Note that this poses no problems for the TOC model of declaring primary resources and their order. 
 
 A [Service Worker](https://w3c.github.io/ServiceWorker/v1/) enables offline reading. Note that it caches secondary resources (CSS, scripts, images, fonts referenced from CSS) without having an explicit list!
 
