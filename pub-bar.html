@@ -1,0 +1,41 @@
+<template>
+  <style>
+  .message { background: #efefef; display: none }
+  :host([offline]) button { display: none }
+  :host([offline]) .message { display: block }
+  </style>
+  <div id="web-publication-toolbar">
+    <button onclick="registerServiceWorker()">
+      Keep This 📖 (offline)
+    </button>
+    <div class="message">
+      You have kept a copy of this Web Publication.
+    </div>
+  </div>
+</template>
+
+<script>
+  // Refers to the "importer", which is index.html
+  var thatDoc = document;
+  // Refers to the "importee", which is src/hello-world.html
+  var thisDoc =  (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
+  // Gets content from <template>
+  var template = thisDoc.querySelector('template');
+
+  // This element will be registered to index.html
+  // Because `document` here means the one in index.html
+  class PubBar extends HTMLElement {
+    constructor() {
+      super();
+      var root = this.attachShadow({mode: 'open'});
+      root.appendChild(document.importNode(template.content, true));
+    }
+
+    // Only called for the offline and open attributes due to observedAttributes
+    attributeChangedCallback(name, oldValue, newValue) {
+      console.log('att', name, oldValue, newValue);
+    }
+  }
+
+  customElements.define('pub-bar', PubBar);
+</script>

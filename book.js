@@ -44,40 +44,26 @@ function fauxFramePrimaryResources() {
   });
 }
 
-let button = document.createElement('button');
-button.id = 'keep-web-publication';
-button.innerText = 'Keep This Book (offline)';
-// populate the cache with the bits from the nav
-button.onclick = function() {
-  registerServiceWorker();
-}
+// inject the pub-bar rel="import"
+let pubbar_link = document.createElement('link');
+pubbar_link.rel = 'import';
+pubbar_link.href = '../pub-bar.html';
+document.head.appendChild(pubbar_link);
 
-let message = document.createElement('div');
-message.id = 'kept-web-publication';
-message.style.background = '#efefef';
-message.innerText = 'You have kept a copy of this Web Publication.';
-
-// TODO: Add update button
-
-let toolbar = document.createElement('nav');
-toolbar.id = 'web-publication-toolbar';
-toolbar.style.border = '0px solid blue';
-toolbar.style.display = 'none';
-toolbar.append(button, message);
-
-// TODO: add .append()/.prepend() shims...this doesn't work in Edge...yet?
-document.body.prepend(toolbar);
+// add the pub-bar (get it?!)
+let pubbar = document.createElement('pub-bar');
+// start hidden until the SW's all good and ready
+pubbar.style.display = 'none';
+document.body.prepend(pubbar);
 
 function checkRegistration() {
   navigator.serviceWorker.getRegistration().then((reg) => {
     if (undefined !== reg) {
-      message.style.display = '';
-      button.style.display = 'none';
+      pubbar.setAttribute('offline', '');
     } else {
-      message.style.display = 'none';
-      button.style.display = '';
+      pubbar.removeAttribute('offline');
     }
-    toolbar.style.display = '';
+    pubbar.style.display = '';
   });
 }
 checkRegistration();
