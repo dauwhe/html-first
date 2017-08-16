@@ -115,6 +115,22 @@ $ http-server . -c-1
 
 We’ve drawn inspiration from Jeremy Keith’s [Resilient Web Design](https://resilientwebdesign.com). This book is a beautiful example of a "bookish" experience on the web now, with good use of link relations, simple design, and beautifully clear, semantic HTML. The subject of the book is also on-topic.
 
+## Frequently Asked Questions
+
+> What about Web Application Manifest?
+
+We consider this to be orthogonal to Web App Manifests. If you wish to have “save to homescreen” functionality, by all means use it.
+
+> What about metadata?
+
+The web already has numerous ways of including metadata in HTML documents. All we’re proposing is a convention that metadata in this "index" document applies to the entire web publication. The PWG can decide which method(s) will be used by WPs.
+
+> What about secondary resources?
+
+With both of our demo books, we’ve been able to cache secondary resources (including fonts referenced from CSS) without having a list of such resources. Such a list is a tremendous burden on authors, and if we can possibly avoid it we should.
+
+> 
+
 ## Feedback
 
 [Web Publications](https://www.github.com/w3c/wpub) are being discussed by the W3C Publishing Working Group.
