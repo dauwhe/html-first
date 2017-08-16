@@ -123,13 +123,19 @@ We consider this to be orthogonal to Web App Manifests. If you wish to have “s
 
 > What about metadata?
 
-The web already has numerous ways of including metadata in HTML documents. All we’re proposing is a convention that metadata in this "index" document applies to the entire web publication. The PWG can decide which method(s) will be used by WPs.
+The web already has numerous ways of including metadata in HTML documents. All we’re proposing is a convention that metadata in this "index" document applies to the entire web publication. The PWG can decide which method(s) will be used by WPs, or leave it to the web.
 
 > What about secondary resources?
 
 With both of our demo books, we’ve been able to cache secondary resources (including fonts referenced from CSS) without having a list of such resources. Such a list is a tremendous burden on authors, and if we can possibly avoid it we should.
 
-> 
+> HTML requires a non-empty title element.
+
+Feature, not bug.
+
+
+
+
 
 ## Feedback
 
