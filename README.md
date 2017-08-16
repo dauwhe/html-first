@@ -5,24 +5,10 @@ We propose to use the HTML ```nav``` element to bind together web resources into
 
 ## What is a Web Publication?
 
-A web publication is a collection of web resources, treated as a [single logical resource](http://w3c.github.io/dpub-pwp-ucr/index.html#single), which meets user expectations of readability, personalization, and accessibility:
+>A [Web Publication](https://w3c.github.io/wpub/) is a collection of one or more primary resources, organized together through a manifest into a [single logical work](http://w3c.github.io/dpub-pwp-ucr/index.html#single) with a default reading order. The Web Publication is uniquely identifiable and presentable using Open Web Platform technologies.
 
-1. I can navigate through the publication without clicking links.
-2. If I leave the publication and go back later, the user agent remembers where I was.
-3. If I search on the page, the scope of the search is the entire web publication.
-4. I can always access the table of contents from the current page.
-5. I can share the web publication’s URL.
-6. I can read the publication while offline.
-7. I can annotate the publication, including highlights, notes, and bookmarks.
-8. I can easily change the font, font size, theme, etc.
-9. I can read a web publication even with user agents that don’t know about web publications (progressive enhancement).
-10. I know that I’m reading a web publication.
-11. I know where I am in the publication (the beginning? the middle? the end? which chapter?). 
+Note that a “manifest” is just the set of information necessary for a user agent to process and present a web publication:
 
-
-## What Information Do We Need?
-
-What is the set of information necessary for a user agent to process and present a web publication?
 
 1. **Title**. This identifies the title of the web publication, which can be distinct from any titles associated with the constituent resources.
 
