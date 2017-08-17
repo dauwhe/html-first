@@ -103,7 +103,7 @@ But why HTML? Why `nav`?
 
 2. [The Theory of Heat Radiation](https://dauwhe.github.io/html-first/HeatRadiation). This book includes MathML, and has a nested table of contents to indicate the Part/Chapter structure. Note that this poses no problems for the TOC model of declaring primary resources and their order. Thanks to [Infogrid Pacific](http://www.infogridpacific.com) for the files.
 
-A [Service Worker](https://w3c.github.io/ServiceWorker/v1/) enables offline reading. Note that it caches secondary resources (CSS, scripts, images, fonts referenced from CSS) without having an explicit list!
+In these current demos, a [Service Worker](https://w3c.github.io/ServiceWorker/v1/) (SW) enables offline reading. It caches secondary resources (CSS, scripts, images, fonts referenced from CSS) without having an explicit list! This is done by loading each primary resource reference in the ToC into hiddent `iframe`s to allow the SW to cache the requests as they come in.
 
 To run the demos locally, we recommend [http-server](https://www.npmjs.com/package/http-server) with server-side caching shut off:
 ```sh
