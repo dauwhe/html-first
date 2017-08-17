@@ -14,6 +14,12 @@
   </div>
 </template>
 
+<!-- for Firefox -->
+<style scope="pub-bar">
+  pub-bar[offline] button{display:none}
+  pub-bar[offline] .message{display:block}
+</style>
+
 <script>
   // Refers to the "importer", which is index.html
   var thatDoc = document;
