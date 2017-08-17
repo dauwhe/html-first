@@ -1,22 +1,23 @@
 <template>
   <style>
   .message { background: #efefef; display: none }
-  :host([offline]) button { display: none }
+  :host([offline]) .keep { display: none }
   :host([offline]) .message { display: block }
   </style>
   <div id="web-publication-toolbar">
-    <button onclick="registerServiceWorker()">
+    <button class="keep" onclick="registerServiceWorker()">
       Keep This 📖 (offline)
     </button>
     <div class="message">
       You have kept a copy of this Web Publication.
+      <button class="discard">Discard 📖</button>
     </div>
   </div>
 </template>
 
 <!-- for Firefox -->
 <style scope="pub-bar">
-  pub-bar[offline] button{display:none}
+  pub-bar[offline] .keep{display:none}
   pub-bar[offline] .message{display:block}
 </style>
 
@@ -35,11 +36,24 @@
       super();
       var root = this.attachShadow({mode: 'open'});
       root.appendChild(document.importNode(template.content, true));
-    }
 
-    // Only called for the offline and open attributes due to observedAttributes
-    attributeChangedCallback(name, oldValue, newValue) {
-      console.log('att', name, oldValue, newValue);
+      root.addEventListener('click', (ev) => {
+        if (ev.target.matches('.discard')) {
+          this.unkeepPublication();
+        }
+      });
+    }
+    unkeepPublication() {
+      // unregister serviceWorker
+      navigator.serviceWorker.getRegistration().then((reg) => {
+        reg.unregister().then((status) => {
+          // remove cache
+          window.caches.delete('web-publication').then((status) => {
+            // toggle UX state
+            this.removeAttribute('offline');
+          });
+        });
+      });
     }
   }
 
