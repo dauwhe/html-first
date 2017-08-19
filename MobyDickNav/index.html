@@ -6,6 +6,10 @@
   <title>Moby-Dick</title>
   <meta name="description" content="Project Gutenberg edition of Moby-Dick">
 
+  <meta name="theme-color" content="#fff">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="manifest.json">
+
   <style type="text/css">
     nav {
       text-align: center;
@@ -42,10 +46,6 @@
     }
   </style>
 
-  <!-- these should be considered polyfill/shim status scripts -->
-  <script src="../dom4.js"></script>
-  <script src="../webcomponents-lite.js"></script>
-  <!-- end shims -->
 </head>
 <body vocab="http://schema.org/" typeof="Book">
   <meta name="bookFormat" content="https://www.w3.org/TR/wpub-vocab/#WebPublication">
@@ -94,7 +94,13 @@
    
   </footer>
   <!-- these should be considered polyfill/shim status scripts -->
-  <script src="../book.js"></script>
+  <script src="../book.js" defer async></script>
+  <!-- these shims are because book.js uses a Web Component (pub-bar.html)
+       ...and uses .prepend() and append() DOM4 methods -->
+  <script src="../dom4.js" defer async></script>
+  <script src="../webcomponents-lite.js" defer async></script>
+  <!-- end shims -->
+
   <!-- end shims -->
 
 </body>
