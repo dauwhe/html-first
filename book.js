@@ -25,22 +25,28 @@ function registerServiceWorker() {
     });
   }
 }
-
 function fauxFramePrimaryResources() {
   console.log('faux framing');
   var spine = document.querySelectorAll("nav[role='doc-toc'] a");
-  // start by caching the Table of Contents
-  var manifestArray = ['./'];
-  for (var spineItem of spine) {
-    manifestArray.push(spineItem.href)
-  }
 
-  // Use hidden iframes to "force" browser to request all the things...
-  manifestArray.forEach((item) => {
-    let iframe = document.createElement('iframe');
-    iframe.src = item;
-    iframe.style.display = 'none';
-    document.body.append(iframe);
+  // start by caching the Table of Contents
+  caches.open('web-publication').then((cache) => {
+    for (var resource of spine) {
+      // undeclared type, so assume it's HTML + dependencies
+      if (resource.type === '') {
+        // Use hidden iframes to "force" browser to request all the things...
+        let iframe = document.createElement('iframe');
+        iframe.src = resource.href;
+        iframe.style.display = 'none';
+        document.body.append(iframe);
+        console.log('iframed', resource.href);
+      } else {
+        console.log('fetching', resource.href);
+        // it's got a specific type, so let's just cache it
+        cache.add(resource.href)
+          .then(() => console.log('successfully cached', resource.href));
+      }
+    }
   });
 }
 
