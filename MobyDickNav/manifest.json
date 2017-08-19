@@ -1,0 +1,102 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "Moby-Dick",
+    "scope": "/html-first/MobyDickNav/",
+    "display": "browser",
+    "start_url": "https://dauwhe.github.io/html-first/MobyDickNav/",
+    "short_name": "Moby-Dick",
+    "theme_color": "transparent",
+    "description": "Project Gutenberg edition of Moby-Dick",
+    "orientation": "any",
+    "background_color": "transparent",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "/images/db15ba9b-31c6-c2bc-a91b-24a49727b094.webPlatform.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/windows10/SplashScreen.scale-200.png.png",
+            "sizes": "1240x600",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/873ff94e-f0bc-65c3-64b4-63a38a1c33fa.webPlatform.png",
+            "sizes": "300x300",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/1d5ba26b-3177-5e72-0ae6-386aa9e188eb.webPlatform.png",
+            "sizes": "88x88",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/819c0944-9e33-c0ae-88f0-66c0419992cf.webPlatform.png",
+            "sizes": "24x24",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/bb837ab8-0221-2534-bf61-524031260d35.webPlatform.png",
+            "sizes": "50x50",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/a15dc8eb-be87-8e6c-e08c-9c79a255aab8.webPlatform.png",
+            "sizes": "620x300",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/c5d800ca-7952-d247-d4ab-fdd3d0f91e54.webPlatform.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/0539902f-2c18-8cb9-a176-f492438d6527.webPlatform.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/9cee9be8-6bae-2a81-4832-67bba18cca8c.webPlatform.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/00375733-926b-e16c-c086-8cbbaa92e16e.webPlatform.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/f05a0af3-2618-cd9d-d75c-0a66bd92496f.webPlatform.png",
+            "sizes": "36x36",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/ios/ios-appicon-1024-1024.png",
+            "sizes": "1024x1024",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/f22c24e7-60b6-edb9-a670-1dec74e3273a.webPlatform.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/b53eaaae-1dc1-98e5-6253-9351124a719e.webPlatform.png",
+            "sizes": "152x152",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/35309986-6e54-5dbd-ce64-203751c14eca.webPlatform.png",
+            "sizes": "120x120",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/cceb59e9-18ac-74f9-dee3-dedb47939a4a.webPlatform.png",
+            "sizes": "76x76",
+            "type": "image/png"
+        }
+    ]
+}
