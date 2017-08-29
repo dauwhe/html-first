@@ -1,6 +1,6 @@
 # Web Publications TOC Explainer
 
-We propose to use the HTML `nav` element to bind together web resources into a web publication. Such a publication is characterized by an ordered list of links, and HTML is ideally suited to create such a list that is understandable by both human readers and machines. Basing web publications on a table of contents allows for easy authoring, a natural upgrade path from existing web books and EPUBs, avoids duplication, helps meet accessibility and usability requirements, and is functional with today’s web.
+We propose to use the HTML `nav` element to bind together web resources into a web publication. Such a publication is characterized by an ordered list of links, and HTML is well suited to create such a list that is understandable by both human readers and machines. Basing web publications on a table of contents allows for easy authoring, a natural upgrade path from existing web books and EPUBs, avoids duplication, helps meet accessibility and usability requirements, and is functional with today’s web.
 
 
 ## What is a Web Publication?
@@ -60,14 +60,15 @@ But why HTML? Why `nav`?
 
 ## Rules
 
-1. A web publication must have an “index” resource containing a `nav` element.
-2. The primary publication resources must be referenced in this `nav` element, in the default order.
-3. These URLs must be available (in the CORS sense) to the origin of the index resource. 
-4. The title of the index resource is the title of the web publication. If the title is absent, @dauwhe and @bigbluehat will come after you. 
-5. The URL of the index resource is the URL of the web publication.
-6. Constituent resources should have a `rel=contents` link to the index resource.
-7. Constituent resources should have `rel=prev` and `rel=next` links as appropriate.
-8. The index resource must have an 📖 attribute on the `html` element, to identify it as a web publication. The attribute may also be serialized as the text string `book`.
+1. A web publication must have an “index” resource containing a `nav` element, unless there's only a single primary resource. 
+2. The primary publication resources must be referenced in this `nav` element, in the default order. 
+3. There may be other `nav` elements in the index document. This proposal only covers the first, in document order. The document author may decide not to display the first `nav`, if they wish to present a different 
+4. These URLs must be available (in the CORS sense) to the origin of the index resource. 
+5. The title of the index resource is the title of the web publication. If the title is absent, @dauwhe and @bigbluehat will come after you. 
+6. The URL of the index resource is the URL of the web publication.
+7. Constituent resources should have a `rel=contents` link to the index resource.
+8. Constituent resources should have `rel=prev` and `rel=next` links as appropriate.
+9. The index resource must have an 📖 attribute on the `html` element, to identify it as a web publication. The attribute may also be serialized as the text string `book`.
 
 ## Examples
 
