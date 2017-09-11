@@ -1,105 +1,267 @@
 {
-    "dir": "ltr",
-    "lang": "en",
-    "name": "Moby-Dick",
-    "scope": "/",
-    "display": "standalone",
-    "start_url": "index.html",
-    "short_name": "Moby-Dick",
-    "theme_color": "transparent",
-    "description": "Project Gutenberg edition of Moby-Dick",
-    "orientation": "any",
-    "background_color": "transparent",
-    "related_applications": [],
-    "prefer_related_applications": false,
-    "serviceworker": {
-      "src": "../sw.js"
+  "dir": "ltr",
+  "lang": "en",
+  "name": "Moby-Dick",
+  "scope": "/",
+  "display": "standalone",
+  "start_url": "index.html",
+  "short_name": "Moby-Dick",
+  "theme_color": "transparent",
+  "description": "Project Gutenberg edition of Moby-Dick",
+  "orientation": "any",
+  "background_color": "transparent",
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "serviceworker": {
+    "src": "../sw.js"
+  },
+  "icons": [{
+      "src": "images/db15ba9b-31c6-c2bc-a91b-24a49727b094.webPlatform.png",
+      "sizes": "48x48",
+      "type": "image/png"
     },
-    "icons": [
-        {
-            "src": "images/db15ba9b-31c6-c2bc-a91b-24a49727b094.webPlatform.png",
-            "sizes": "48x48",
-            "type": "image/png"
-        },
-        {
-            "src": "images/windows10/SplashScreen.scale-200.png.png",
-            "sizes": "1240x600",
-            "type": "image/png"
-        },
-        {
-            "src": "images/873ff94e-f0bc-65c3-64b4-63a38a1c33fa.webPlatform.png",
-            "sizes": "300x300",
-            "type": "image/png"
-        },
-        {
-            "src": "images/1d5ba26b-3177-5e72-0ae6-386aa9e188eb.webPlatform.png",
-            "sizes": "88x88",
-            "type": "image/png"
-        },
-        {
-            "src": "images/819c0944-9e33-c0ae-88f0-66c0419992cf.webPlatform.png",
-            "sizes": "24x24",
-            "type": "image/png"
-        },
-        {
-            "src": "images/bb837ab8-0221-2534-bf61-524031260d35.webPlatform.png",
-            "sizes": "50x50",
-            "type": "image/png"
-        },
-        {
-            "src": "images/a15dc8eb-be87-8e6c-e08c-9c79a255aab8.webPlatform.png",
-            "sizes": "620x300",
-            "type": "image/png"
-        },
-        {
-            "src": "images/c5d800ca-7952-d247-d4ab-fdd3d0f91e54.webPlatform.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "images/0539902f-2c18-8cb9-a176-f492438d6527.webPlatform.png",
-            "sizes": "144x144",
-            "type": "image/png"
-        },
-        {
-            "src": "images/9cee9be8-6bae-2a81-4832-67bba18cca8c.webPlatform.png",
-            "sizes": "96x96",
-            "type": "image/png"
-        },
-        {
-            "src": "images/00375733-926b-e16c-c086-8cbbaa92e16e.webPlatform.png",
-            "sizes": "72x72",
-            "type": "image/png"
-        },
-        {
-            "src": "images/f05a0af3-2618-cd9d-d75c-0a66bd92496f.webPlatform.png",
-            "sizes": "36x36",
-            "type": "image/png"
-        },
-        {
-            "src": "images/ios/ios-appicon-1024-1024.png",
-            "sizes": "1024x1024",
-            "type": "image/png"
-        },
-        {
-            "src": "images/f22c24e7-60b6-edb9-a670-1dec74e3273a.webPlatform.png",
-            "sizes": "180x180",
-            "type": "image/png"
-        },
-        {
-            "src": "images/b53eaaae-1dc1-98e5-6253-9351124a719e.webPlatform.png",
-            "sizes": "152x152",
-            "type": "image/png"
-        },
-        {
-            "src": "images/35309986-6e54-5dbd-ce64-203751c14eca.webPlatform.png",
-            "sizes": "120x120",
-            "type": "image/png"
-        },
-        {
-            "src": "images/cceb59e9-18ac-74f9-dee3-dedb47939a4a.webPlatform.png",
-            "sizes": "76x76",
-            "type": "image/png"
-        }
-    ]
+    {
+      "src": "images/windows10/SplashScreen.scale-200.png.png",
+      "sizes": "1240x600",
+      "type": "image/png"
+    },
+    {
+      "src": "images/873ff94e-f0bc-65c3-64b4-63a38a1c33fa.webPlatform.png",
+      "sizes": "300x300",
+      "type": "image/png"
+    },
+    {
+      "src": "images/1d5ba26b-3177-5e72-0ae6-386aa9e188eb.webPlatform.png",
+      "sizes": "88x88",
+      "type": "image/png"
+    },
+    {
+      "src": "images/819c0944-9e33-c0ae-88f0-66c0419992cf.webPlatform.png",
+      "sizes": "24x24",
+      "type": "image/png"
+    },
+    {
+      "src": "images/bb837ab8-0221-2534-bf61-524031260d35.webPlatform.png",
+      "sizes": "50x50",
+      "type": "image/png"
+    },
+    {
+      "src": "images/a15dc8eb-be87-8e6c-e08c-9c79a255aab8.webPlatform.png",
+      "sizes": "620x300",
+      "type": "image/png"
+    },
+    {
+      "src": "images/c5d800ca-7952-d247-d4ab-fdd3d0f91e54.webPlatform.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/0539902f-2c18-8cb9-a176-f492438d6527.webPlatform.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "images/9cee9be8-6bae-2a81-4832-67bba18cca8c.webPlatform.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "images/00375733-926b-e16c-c086-8cbbaa92e16e.webPlatform.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "images/f05a0af3-2618-cd9d-d75c-0a66bd92496f.webPlatform.png",
+      "sizes": "36x36",
+      "type": "image/png"
+    },
+    {
+      "src": "images/ios/ios-appicon-1024-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "images/f22c24e7-60b6-edb9-a670-1dec74e3273a.webPlatform.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "images/b53eaaae-1dc1-98e5-6253-9351124a719e.webPlatform.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "images/35309986-6e54-5dbd-ce64-203751c14eca.webPlatform.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    },
+    {
+      "src": "images/cceb59e9-18ac-74f9-dee3-dedb47939a4a.webPlatform.png",
+      "sizes": "76x76",
+      "type": "image/png"
+    }
+  ],
+
+  "kind": "📖",
+  "locator": "https://dauwhe.github.io/MobyDickNav/",
+  "address": "https://dauwhe.github.io/MobyDickNav/",
+  "main": [
+    "index.html",
+    "html/title-page.html",
+    "html/copyright.html",
+    "html/introduction.html",
+    "html/epigraph.html",
+    "html/c001.html",
+    "html/c002.html",
+    "html/c003.html",
+    "html/c004.html",
+    "html/c005.html",
+    "html/c006.html",
+    "html/c007.html",
+    "html/c008.html",
+    "html/c009.html",
+    "html/c010.html",
+    "html/c011.html",
+    "html/c012.html",
+    "html/c013.html",
+    "html/c014.html",
+    "html/c015.html",
+    "html/c016.html",
+    "html/c017.html",
+    "html/c018.html",
+    "html/c019.html",
+    "html/c020.html",
+    "html/c021.html",
+    "html/c022.html",
+    "html/c023.html",
+    "html/c024.html",
+    "html/c025.html",
+    "html/c026.html",
+    "html/c027.html",
+    "html/c028.html",
+    "html/c029.html",
+    "html/c030.html",
+    "html/c031.html",
+    "html/c032.html",
+    "html/c033.html",
+    "html/c034.html",
+    "html/c035.html",
+    "html/c036.html",
+    "html/c037.html",
+    "html/c038.html",
+    "html/c039.html",
+    "html/c040.html",
+    "html/c041.html",
+    "html/c042.html",
+    "html/c043.html",
+    "html/c044.html",
+    "html/c045.html",
+    "html/c046.html",
+    "html/c047.html",
+    "html/c048.html",
+    "html/c049.html",
+    "html/c050.html",
+    "html/c051.html",
+    "html/c052.html",
+    "html/c053.html",
+    "html/c054.html",
+    "html/c055.html",
+    "html/c056.html",
+    "html/c057.html",
+    "html/c058.html",
+    "html/c059.html",
+    "html/c060.html",
+    "html/c061.html",
+    "html/c062.html",
+    "html/c063.html",
+    "html/c064.html",
+    "html/c065.html",
+    "html/c066.html",
+    "html/c067.html",
+    "html/c068.html",
+    "html/c069.html",
+    "html/c070.html",
+    "html/c071.html",
+    "html/c072.html",
+    "html/c073.html",
+    "html/c074.html",
+    "html/c075.html",
+    "html/c076.html",
+    "html/c077.html",
+    "html/c078.html",
+    "html/c079.html",
+    "html/c080.html",
+    "html/c081.html",
+    "html/c082.html",
+    "html/c083.html",
+    "html/c084.html",
+    "html/c085.html",
+    "html/c086.html",
+    "html/c087.html",
+    "html/c088.html",
+    "html/c089.html",
+    "html/c090.html",
+    "html/c091.html",
+    "html/c092.html",
+    "html/c093.html",
+    "html/c094.html",
+    "html/c095.html",
+    "html/c096.html",
+    "html/c097.html",
+    "html/c098.html",
+    "html/c099.html",
+    "html/c100.html",
+    "html/c101.html",
+    "html/c102.html",
+    "html/c103.html",
+    "html/c104.html",
+    "html/c105.html",
+    "html/c106.html",
+    "html/c107.html",
+    "html/c108.html",
+    "html/c109.html",
+    "html/c110.html",
+    "html/c111.html",
+    "html/c112.html",
+    "html/c113.html",
+    "html/c114.html",
+    "html/c115.html",
+    "html/c116.html",
+    "html/c117.html",
+    "html/c118.html",
+    "html/c119.html",
+    "html/c120.html",
+    "html/c121.html",
+    "html/c122.html",
+    "html/c123.html",
+    "html/c124.html",
+    "html/c125.html",
+    "html/c126.html",
+    "html/c127.html",
+    "html/c128.html",
+    "html/c129.html",
+    "html/c130.html",
+    "html/c131.html",
+    "html/c132.html",
+    "html/c133.html",
+    "html/c134.html",
+    "html/c135.html",
+    "html/c136.html"
+  ],
+  "resources": [
+    "css/mobydick.css",
+    "js/shim.js",
+    "fonts/STIXGeneral.otf",
+    "fonts/STIXGeneralBol.otf",
+    "fonts/STIXGeneralItalic.otf",
+    "fonts/STIXGeneralBolIta.otf",
+    "images/moby-dick-book-cover.jpg",
+    "images/moby-dick-icon.jpg",
+    "images/Moby-Dick_FE_title_page.jpg",
+    "images/Moby_Dick_p510_illustration.jpg",
+    "images/Moby_Dick_final_chase.jpg",
+    "images/The_voyage_of_the_Pequod.jpg",
+    "images/Queequeg.jpg"
+  ],
+  "contents": "https://dauwhe.github.io/MobyDickNav/"
 }
