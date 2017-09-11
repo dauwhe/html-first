@@ -1,3 +1,10 @@
+[Manifest]
+hash-algorithms: sha384
+sign-with: domain.crt; domain.key
+certificate-chain: intermediate1.cert
+Date: Fri, 08 Sep 2017 06:25:24 GMT
+origin: https://dauwhe.github.io
+
 [Content]
 https://dauwhe.github.io/html-first/MobyDickNav/index.html
 
