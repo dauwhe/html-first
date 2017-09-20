@@ -21,11 +21,11 @@ We must answer two fundamental questions about any given web publication:
 
 2. How do the pieces fit together? Do some of the pieces have to be in a certain order?
 
-A "manifest" is a list of the passengers or cargo on a ship. We need a list of the components of a web publication--all the HTML files, stylesheets, images, scripts, etc. needed to create the whole. We also need a special list of the files that go in a particular order. In EPUB we called this the "spine". 
+A "manifest" is a list of the passengers or cargo on a ship. We need a list of the components of a web publication—all the HTML files, stylesheets, images, scripts, etc. needed to create the whole. We also need a special list of the files that go in a particular order. In EPUB we called this the "spine". We can call this the "default reading order." 
 
 In order to placate the web developers who seemingly rule the world, the manifest is expressed as a JSON file. The manifest is also a natural location for metadata that applies to the whole publication, rather than just one of the components. 
 
-Here's a simple example, for a tiny version of "Moby-Dick" with only three HTML files:
+Here's a simple example, for a tiny version of *Moby-Dick* with only three HTML files:
 
 ```json
 {
@@ -58,9 +58,9 @@ We use "name" to be compatible with [Web Application Manifest](https://www.w3.or
 
 This is the language of the manifest. 
 
-Issue: Should this be the language that any user interface for the book is presented in?
+> Issue: Should this be the language that any user interface for the book is presented in?
 
-Issue: What about multi-language publications?
+> Issue: What about multi-language publications?
 
 ### 4. Locator
 
@@ -85,14 +85,16 @@ This is an ordered list of the main resources in a publication, analagous to the
 
 This is a list of all the other resources that are a part of the publication. No need to list `main` resources again.
 
-Note: These resources could be HTML documents, if they are not part of a "default reading order".
+> Note: These resources could be HTML documents, if they are not part of a "default reading order".
 
 ### 9. Contents
 
 This lists the URL of the publication's table of contents (i.e. `nav` file). 
 
 
-## Installing a web publication
+## Launching a web publication
+
+
 
 
 
@@ -100,11 +102,25 @@ This lists the URL of the publication's table of contents (i.e. `nav` file).
 
 ## Navigation
 
-Navigation is critical for accessing and understanding the components of a web publication. A web publication **should** have a table of contents, with a `nav` element which includes entries for at least all main resources.
+Users need to find their way around all the content in a web publication. This involves everything from "turning the page" to finding a table of contents.
+
+### Moving through the primary resources
+
+A web publication has a default reading order, and it should be easy for the reader to see everything in sequence. A user agent must provide means to go to the previous or next resource in the default reading order. 
+
+
+
+
+### Table of Contents
+
+A table of contents is critical for accessing and understanding the components of a web publication. A web publication **should** have a table of contents, with a `nav` element which **should** include entries for all main resources, at least.
+
+If a table of contents exists, the user agent **must** provide a way to reach the table of contents any time the user requests it.
+
 
 ## Content Model
 
-Whatever works on the web. 
+Whatever works on the web. In particular, unlike EPUB, the HTML serialization of HTML5 is encouraged.
 
 ## Synchronized media 
 
@@ -112,6 +128,9 @@ Whatever works on the web.
 ## Implementation issues
 ### Local storage
 ### Service workers
+### Packaging
+
+The web packaging spec is designed around HTTP requests and responses, which among other things means that you must know the media type of a resource to package it.
 	
 ## Scripting
 
