@@ -170,7 +170,7 @@ The web already has numerous ways of including metadata in HTML documents. All w
 
 > What about secondary resources?
 
-With both of our demo books, we’ve been able to cache secondary resources (including fonts referenced from CSS) without having a list of such resources. Such a list is a tremendous burden on authors, and if we can possibly avoid it we should.
+With both of our demo books, we’ve been able to cache secondary resources (including fonts referenced from CSS) without having a list of such resources. Such a list is a burden on authors. But many machine-processing scenarios, as well as use cases outside the browser (such as reading systems) may benefit from a machine-optimized list of such resources. Hence we've added an optional JSON manifest.
 
 > HTML requires a non-empty title element.
 
