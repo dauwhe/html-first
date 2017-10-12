@@ -57,12 +57,17 @@ But why HTML? Why `nav`?
 6. **Progressive enhancement**. Basing web publications on `nav` allows existing user agents to make web publications functional, and provides an easy path from existing content which has tables of contents (for example, every EPUB3 in the world). A user can point their browser at an HTML file, and the browser can render it. Even if no new features of web publications are implemented in that browser, or shimmed, the user can read the publication.
 
 
+## Humans and Machines, Internal and External
+
+The html nav element is a good way to describe a default reading order, but is not suited for listing secondary resources. Having an external JSON file is convenient for machine-processing of this information. This could also provide an alternate location for publication-wide metadata.
+
+
 
 ## Rules
 
 1. A web publication must have an “index” resource containing a `nav` element, unless there's only a single primary resource. 
 2. The primary publication resources must be referenced in this `nav` element, in the default order. 
-3. There may be other `nav` elements in the index document. This proposal only covers the first, in document order. The document author may decide not to display the first `nav`, if they wish to present a different 
+3. There may be other `nav` elements in the index document. This proposal only covers the first, in document order. The document author may decide not to display the first `nav`, if they wish to present a different navigation structure to the user.
 4. These URLs must be available (in the CORS sense) to the origin of the index resource. 
 5. The title of the index resource is the title of the web publication. If the title is absent, @dauwhe and @bigbluehat will come after you. 
 6. The URL of the index resource is the URL of the web publication.
@@ -74,6 +79,9 @@ But why HTML? Why `nav`?
 
 ### Simple Code Example
 
+
+#### HTML `nav` file
+
 ```html
 <!DOCTYPE html>
 <html 📖 lang="en">
@@ -81,7 +89,8 @@ But why HTML? Why `nav`?
     <title>Moby-Dick</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="next prefetch" href="html/c001.html" />
+    <link rel="next prefetch" href="html/c001.html">
+    <link rel="publication" href="manifest.json">
   </head>
   <body>
     <main>
@@ -96,6 +105,37 @@ But why HTML? Why `nav`?
      </main>
   </body>
 </html>
+```
+
+#### JSON manifest
+
+```json
+
+{
+  "metadata": {
+    "creator": "Herman Melville",
+    "publisher": "Harper and Row"
+  },
+
+  "resources": [{
+      "href": "css/MobyDick.css",
+      "type": "text/css"
+    },
+    {
+      "href": "Moby_Dick_final_chase.jpg",
+      "type": "image/jpeg"
+    },
+    {
+      "href": "Moby_Dick_p510_illustration.jpg",
+      "type": "image/jpeg"
+    },
+    {
+      "href": "moby-dick-book-cover.jpg",
+      "type": "image/jpeg"
+    }
+  ]
+}
+
 ```
 
 ### Demo Books
