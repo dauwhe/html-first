@@ -104,7 +104,7 @@ But why HTML? Why `nav`?
 
 2. [The Theory of Heat Radiation](https://dauwhe.github.io/html-first/HeatRadiation). This book includes MathML, and has a nested table of contents to indicate the Part/Chapter structure. Note that this poses no problems for the TOC model of declaring primary resources and their order. Thanks to [Infogrid Pacific](http://www.infogridpacific.com) for the files.
 
-In these current demos, a [Service Worker](https://w3c.github.io/ServiceWorker/v1/) (SW) enables offline reading. It caches secondary resources (CSS, scripts, images, fonts referenced from CSS) without having an explicit list! This is done by loading each primary resource reference in the ToC into hiddent `iframe`s to allow the SW to cache the requests as they come in.
+In these current demos, a [Service Worker](https://w3c.github.io/ServiceWorker/v1/) (SW) enables offline reading. It caches secondary resources (CSS, scripts, images, fonts referenced from CSS) without having an explicit list! This is done by loading each primary resource reference in the ToC into hidden `iframe`s to allow the SW to cache the requests as they come in.
 
 The current [Service Worker code](sw.js) uses the [`stale-while-revalidate` pattern](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/#stale-while-revalidate)--meaning, every request is pulled from cache first (if available) and then the network is checked for updates. This provides the "webby-ist" experience for the author (readers eventually get updates as they browse/page-through the text). However, there are certainly other caching and updating patterns to consider and explore.
 
