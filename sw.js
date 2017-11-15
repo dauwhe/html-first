@@ -22,8 +22,7 @@ self.addEventListener('fetch', function(event) {
       });
       return response;
     }).catch(function () {
-      // TODO: find this awesomeness and put it in this repo to handle 404's
-      return caches.match('/sw-test/gallery/myLittleVader.jpg');
+      return caches.match('/404.jpg');
     });
 
     return response || fetchPromise;
