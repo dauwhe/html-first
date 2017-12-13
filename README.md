@@ -117,7 +117,24 @@ The html nav element is a good way to describe a default reading order, but is n
     "publisher": "Harper and Row"
   },
 
-  "resources": [{
+  "resources": [
+    {
+      "href": "html/c001.html",
+      "type": "text/html"
+    },
+    {
+      "href": "html/c002.html",
+      "type": "text/html"
+    },
+    {
+      "href": "html/c003.html",
+      "type": "text/html"
+    },
+    {
+      "href": "html/c004.html",
+      "type": "text/html"
+    },
+    {
       "href": "css/MobyDick.css",
       "type": "text/css"
     },
