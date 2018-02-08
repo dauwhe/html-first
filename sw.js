@@ -16,8 +16,9 @@ self.addEventListener('fetch', function(event) {
       // and serve second one
       let responseClone = response.clone();
 
-      // we add a separate sub-resources area for these bits
-      caches.open('web-publication').then(function (cache) {
+      let scope_url = new URL(self.registration.scope);
+      // we use the scope_url to determine the same pathname that the page has
+      caches.open(scope_url.pathname).then(function (cache) {
         cache.put(event.request, responseClone);
       });
       return response;

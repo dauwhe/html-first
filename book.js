@@ -1,36 +1,51 @@
-// register service worker
-function registerServiceWorker() {
-  if ('serviceWorker' in navigator) {
-    // path is relative to where book.js is loaded...
-    navigator.serviceWorker.register('../sw.js', {
-      // strip any file name, so we're scoping for this spot in the hierarchy
-      scope: './'
-    }).then(function(reg) {
+if ('serviceWorker' in navigator) {
+  // path is relative to where book.js is loaded...
+  navigator.serviceWorker.register('../sw.js', {
+    // strip any file name, so we're scoping for this spot in the hierarchy
+    scope: './'
+  }).then(function(reg) {
 
-      // TODO: understand these states better, so fauxFrame runs correctly
-      if(reg.installing) {
-        console.log('Service worker installing');
-        fauxFramePrimaryResources();
-      } else if(reg.waiting) {
-        console.log('Service worker installed');
-      } else if(reg.active) {
-        console.log('Service worker active');
-        fauxFramePrimaryResources();
+    // TODO: understand these states better, so fauxFrame runs correctly
+    if(reg.installing) {
+      console.log('Service worker installing');
+    } else if(reg.waiting) {
+      console.log('Service worker installed');
+    } else if(reg.active) {
+      console.log('Service worker active');
+    }
+  }).catch(function(error) {
+    // registration failed
+    console.error('Registration failed with ' + error);
+  });
+}
+
+function collectSpine() {
+  return document.querySelectorAll("nav[role='doc-toc'] a");
+}
+
+function checkCachedStatus(cache) {
+  let toolbar = document.getElementById('web-publication-toolbar');
+  let spine = collectSpine();
+  for (let resource of spine) {
+    cache.match(resource.href).then((response) => {
+      if (undefined !== response && response.status === 200) {
+        // let's just make sure anything's in here for now...
+        // TODO: output a % of contents cached? that'd be nice...
+        console.log(resource.href, response.status);
+        toolbar.classList.add('offline');
+        return;
       }
-      // setup display options on the toolbar
-      checkRegistration();
-    }).catch(function(error) {
-      // registration failed
-      console.error('Registration failed with ' + error);
     });
   }
 }
-function fauxFramePrimaryResources() {
+
+function keep() {
   console.log('faux framing');
-  var spine = document.querySelectorAll("nav[role='doc-toc'] a");
+  let spine = collectSpine();
 
   // start by caching the Table of Contents
-  caches.open('web-publication').then((cache) => {
+  // TODO: install a separate ServiceWorker to handle these requests?
+  caches.open(location.pathname).then((cache) => {
     for (var resource of spine) {
       // undeclared type, so assume it's HTML + dependencies
       if (resource.type === '') {
@@ -47,29 +62,53 @@ function fauxFramePrimaryResources() {
           .then(() => console.log('successfully cached', resource.href));
       }
     }
+    // TODO: find a more efficient way to check the cache status...this checks
+    // everything...again
+    checkCachedStatus(cache);
   });
 }
 
-// inject the pub-bar rel="import"
-let pubbar_link = document.createElement('link');
-pubbar_link.rel = 'import';
-pubbar_link.href = '../pub-bar.html';
-document.head.appendChild(pubbar_link);
+function discard() {
+  caches.delete(location.pathname).then((status) => {
+    // TODO: actually check the status...
+    let pubbar = document.getElementById('web-publication-toolbar');
+    pubbar.classList.remove('offline');
+  });
+}
 
-// add the pub-bar (get it?!)
-let pubbar = document.createElement('pub-bar');
-// start hidden until the SW's all good and ready
-pubbar.style.display = 'none';
+var pubbar = document.createElement('div');
+pubbar.innerHTML = `
+  <style>
+  #web-publication-toolbar .keep { display: block }
+  #web-publication-toolbar .message { background: #efefef; display: none }
+  #web-publication-toolbar.offline .keep { display:none }
+  #web-publication-toolbar.offline .message { display:block }
+  </style>
+  <div id="web-publication-toolbar">
+    <button class="keep" onclick="keep()" title="download all ToC referenced pages">
+      Cache The 📖 Offline
+    </button>
+    <div class="message">
+      You have kept a copy of this Web Publication.
+      <button class="discard" onclick="discard()">Discard 📖</button>
+    </div>
+  </div>
+`;
+
 document.body.prepend(pubbar);
 
-function checkRegistration() {
-  navigator.serviceWorker.getRegistration().then((reg) => {
-    if (undefined !== reg) {
-      pubbar.setAttribute('offline', '');
-    } else {
-      pubbar.removeAttribute('offline');
-    }
-    pubbar.style.display = '';
-  });
-}
-checkRegistration();
+caches.keys().then((keys) => {
+  // TODO: we need to know more than that the cache exists...
+  // ...do we have primary resources in it yet?
+  let cache_exists = keys.indexOf(location.pathname) > -1;
+  let toolbar = document.getElementById('web-publication-toolbar');
+  console.log('toolbar', toolbar);
+  if (cache_exists) {
+    // now check to see if that cache has any publication contents
+    caches.open(location.pathname).then((cache) => {
+      checkCachedStatus(cache);
+    });
+  } else {
+    toolbar.classList.remove('offline');
+  }
+});
