@@ -16,14 +16,14 @@ self.addEventListener('fetch', function(event) {
       // and serve second one
       let responseClone = response.clone();
 
-      // we add a separate sub-resources area for these bits
-      caches.open('web-publication').then(function (cache) {
+      let scope_url = new URL(self.registration.scope);
+      // we use the scope_url to determine the same pathname that the page has
+      caches.open(scope_url.pathname).then(function (cache) {
         cache.put(event.request, responseClone);
       });
       return response;
     }).catch(function () {
-      // TODO: find this awesomeness and put it in this repo to handle 404's
-      return caches.match('/sw-test/gallery/myLittleVader.jpg');
+      return caches.match('/404.jpg');
     });
 
     return response || fetchPromise;
