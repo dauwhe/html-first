@@ -19,6 +19,16 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+let publication_path = location.pathname;
+let pathname_array = location.pathname.split('/');
+if (pathname_array[pathname_array.length-1] !== "") {
+  // there's something on the end of the path...probably a "filename"
+  // first, remove the filename
+  pathname_array.pop();
+  // then, put things back together and add the trailing slash
+  publication_path = pathname_array.join('/') + '/';
+}
+
 function collectSpine() {
   return document.querySelectorAll("nav[role='doc-toc'] a");
 }
@@ -45,7 +55,7 @@ function keep() {
 
   // start by caching the Table of Contents
   // TODO: install a separate ServiceWorker to handle these requests?
-  caches.open(location.pathname).then((cache) => {
+  caches.open(publication_path).then((cache) => {
     for (var resource of spine) {
       // undeclared type, so assume it's HTML + dependencies
       if (resource.type === '') {
@@ -69,7 +79,7 @@ function keep() {
 }
 
 function discard() {
-  caches.delete(location.pathname).then((status) => {
+  caches.delete(publication_path).then((status) => {
     // TODO: actually check the status...
     let pubbar = document.getElementById('web-publication-toolbar');
     pubbar.classList.remove('offline');
@@ -100,12 +110,12 @@ document.body.prepend(pubbar);
 caches.keys().then((keys) => {
   // TODO: we need to know more than that the cache exists...
   // ...do we have primary resources in it yet?
-  let cache_exists = keys.indexOf(location.pathname) > -1;
+  let cache_exists = keys.indexOf(publication_path) > -1;
   let toolbar = document.getElementById('web-publication-toolbar');
   console.log('toolbar', toolbar);
   if (cache_exists) {
     // now check to see if that cache has any publication contents
-    caches.open(location.pathname).then((cache) => {
+    caches.open(publication_path).then((cache) => {
       checkCachedStatus(cache);
     });
   } else {
