@@ -8,10 +8,13 @@ if ('serviceWorker' in navigator) {
     // TODO: understand these states better, so fauxFrame runs correctly
     if(reg.installing) {
       console.log('Service worker installing');
+      keep();
     } else if(reg.waiting) {
       console.log('Service worker installed');
+      keep();
     } else if(reg.active) {
       console.log('Service worker active');
+      keep();
     }
   }).catch(function(error) {
     // registration failed
@@ -30,95 +33,70 @@ if (pathname_array[pathname_array.length-1] !== "") {
 }
 
 function collectSpine() {
-  return document.querySelectorAll("nav[role='doc-toc'] a");
+  let nav = document.querySelectorAll("nav[role='doc-toc'] a");
+  let spine = [];
+  for (let resource of nav) {
+    spine.push({
+      href: resource.href,
+      type: resource.type
+    });
+  }
+  return spine;
 }
 
 function checkCachedStatus(cache) {
-  let toolbar = document.getElementById('web-publication-toolbar');
+//  let toolbar = document.getElementById('web-publication-toolbar');
   let spine = collectSpine();
   for (let resource of spine) {
     cache.match(resource.href).then((response) => {
       if (undefined !== response && response.status === 200) {
         // let's just make sure anything's in here for now...
-        // TODO: output a % of contents cached? that'd be nice...
         console.log(resource.href, response.status);
-        toolbar.classList.add('offline');
         return;
       }
     });
   }
 }
 
-function keep() {
-  console.log('faux framing');
-  let spine = collectSpine();
+// either iframe (and collect via fetch-listner in SW) or directly add to cache
+function fauxFrame(resource) {
+  // undeclared type, so assume it's HTML + dependencies
+  if (resource.type === '') {
+    // Use hidden iframes to "force" browser to request all the things...
+    let iframe = document.createElement('iframe');
+    iframe.src = resource.href;
+    iframe.style.display = 'none';
+    document.body.append(iframe);
+    console.log('iframed', resource.href);
+  } else {
+    console.log('fetching', resource.href);
+    // it's got a specific type, so let's just cache it
+    cache.add(resource.href)
+      .then(() => console.log('successfully cached', resource.href));
+  }
+}
 
+function keep() {
+  let spine = collectSpine();
   // start by caching the Table of Contents
   // TODO: install a separate ServiceWorker to handle these requests?
   caches.open(publication_path).then((cache) => {
-    for (var resource of spine) {
-      // undeclared type, so assume it's HTML + dependencies
-      if (resource.type === '') {
-        // Use hidden iframes to "force" browser to request all the things...
-        let iframe = document.createElement('iframe');
-        iframe.src = resource.href;
-        iframe.style.display = 'none';
-        document.body.append(iframe);
-        console.log('iframed', resource.href);
-      } else {
-        console.log('fetching', resource.href);
-        // it's got a specific type, so let's just cache it
-        cache.add(resource.href)
-          .then(() => console.log('successfully cached', resource.href));
-      }
-    }
-    // TODO: find a more efficient way to check the cache status...this checks
-    // everything...again
-    checkCachedStatus(cache);
+    spine.map((resource) => {
+      // check cache before fauxFraming
+      cache.match(resource.href).then((response) => {
+        if (undefined === response || response.status !== 200) {
+          // cache miss or failure, so fauxFrame
+          fauxFrame(resource);
+        } else {
+          console.log('already cached', resource.href);
+        }
+      });
+    });
   });
 }
 
 function discard() {
   caches.delete(publication_path).then((status) => {
-    // TODO: actually check the status...
-    let pubbar = document.getElementById('web-publication-toolbar');
-    pubbar.classList.remove('offline');
+    console.log('deleted?', status);
   });
 }
-
-var pubbar = document.createElement('div');
-pubbar.innerHTML = `
-  <style>
-  #web-publication-toolbar .keep { display: block }
-  #web-publication-toolbar .message { background: #efefef; display: none }
-  #web-publication-toolbar.offline .keep { display:none }
-  #web-publication-toolbar.offline .message { display:block }
-  </style>
-  <div id="web-publication-toolbar">
-    <button class="keep" onclick="keep()" title="download all ToC referenced pages">
-      Cache The 📖 Offline
-    </button>
-    <div class="message">
-      You have kept a copy of this Web Publication.
-      <button class="discard" onclick="discard()">Discard 📖</button>
-    </div>
-  </div>
-`;
-
-document.body.prepend(pubbar);
-
-caches.keys().then((keys) => {
-  // TODO: we need to know more than that the cache exists...
-  // ...do we have primary resources in it yet?
-  let cache_exists = keys.indexOf(publication_path) > -1;
-  let toolbar = document.getElementById('web-publication-toolbar');
-  console.log('toolbar', toolbar);
-  if (cache_exists) {
-    // now check to see if that cache has any publication contents
-    caches.open(publication_path).then((cache) => {
-      checkCachedStatus(cache);
-    });
-  } else {
-    toolbar.classList.remove('offline');
-  }
-});
