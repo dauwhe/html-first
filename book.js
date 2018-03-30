@@ -4,7 +4,9 @@ if ('serviceWorker' in navigator) {
     // strip any file name, so we're scoping for this spot in the hierarchy
     scope: './'
   }).then(function(reg) {
-
+    reg.onupdatefound = function() {
+      console.log('ServiceWorker update available!');
+    }
     // TODO: understand these states better, so fauxFrame runs correctly
     if(reg.installing) {
       console.log('Service worker installing');
@@ -31,6 +33,13 @@ if (pathname_array[pathname_array.length-1] !== "") {
   // then, put things back together and add the trailing slash
   publication_path = pathname_array.join('/') + '/';
 }
+
+// keep the polyfill fresh...this will run even without the SW being ready
+caches.open(publication_path).then((cache) => {
+  // TODO: anyway to avoid being self referential?
+  cache.add('../book.js')
+    .then(() => console.log('updated the polyfill'));
+});
 
 function collectSpine() {
   let nav = document.querySelectorAll("nav[role='doc-toc'] a");
@@ -59,7 +68,7 @@ function checkCachedStatus(cache) {
 }
 
 // either iframe (and collect via fetch-listner in SW) or directly add to cache
-function fauxFrame(resource) {
+function fauxFrame(cache, resource) {
   // undeclared type, so assume it's HTML + dependencies
   if (resource.type === '') {
     // Use hidden iframes to "force" browser to request all the things...
@@ -86,7 +95,7 @@ function keep() {
       cache.match(resource.href).then((response) => {
         if (undefined === response || response.status !== 200) {
           // cache miss or failure, so fauxFrame
-          fauxFrame(resource);
+          fauxFrame(cache, resource);
         } else {
           console.log('already cached', resource.href);
         }
