@@ -157,9 +157,9 @@ The html nav element is a good way to describe a default reading order, but is n
 
 ### Demo Books
 
-1. [Moby-Dick](https://dauwhe.github.io/html-first/MobyDickNav/index.html).
+1. [Moby-Dick](https://dauwhe.github.io/html-first/Moby-Dick/).
 
-2. [The Theory of Heat Radiation](https://dauwhe.github.io/html-first/HeatRadiation). This book includes MathML, and has a nested table of contents to indicate the Part/Chapter structure. Note that this poses no problems for the TOC model of declaring primary resources and their order. Thanks to [Infogrid Pacific](http://www.infogridpacific.com) for the files.
+2. [The Theory of Heat Radiation](https://dauwhe.github.io/html-first/HeatRadiation/). This book includes MathML, and has a nested table of contents to indicate the Part/Chapter structure. Note that this poses no problems for the TOC model of declaring primary resources and their order. Thanks to [Infogrid Pacific](http://www.infogridpacific.com) for the files.
 
 In these current demos, a [Service Worker](https://w3c.github.io/ServiceWorker/v1/) (SW) enables offline reading. It caches secondary resources (CSS, scripts, images, fonts referenced from CSS) without having an explicit list! This is done by loading each primary resource reference in the ToC into hidden `iframe`s to allow the SW to cache the requests as they come in.
 
