@@ -11,20 +11,33 @@
 <style>
 
 details {
-
-position: fixed;
-top: 0;
-left: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: #f3f3f3;
+}
+details > summary {
+  cursor: pointer;
+}
+details > nav {
 width: 20vw;
 height: 100vh;
+min-width: 20em;
 overflow-y: scroll;
 }
 
+details[open] + .galley-rw {
+  opacity: 0.5;
+}
+
+div:target {
+  background: #f3f3f3;
+}
 
 .galley-rw {
 position: fixed;
-width: 80vw;
-margin-left: 20vw;
+width: 90vw;
 height: 100vh;
 overflow: -webkit-paged-x;
 }
@@ -36,10 +49,7 @@ overflow: -webkit-paged-x;
 <body>
 
 <details>
-<summary>
-<h1>Table of Contents</h1>
-</summary>
-
+<summary>Table of Contents</summary>
 <nav role="doc-toc">
 <ol>
 <li><a href="#x2H_4_0002">ETYMOLOGY.</a></li>

@@ -2,6 +2,7 @@
 <html 📖 lang="en">
 <head>
   <meta charset="utf-8">
+  <base target="content" />
 
   <title>Moby-Dick</title>
   <meta name="description" content="Project Gutenberg edition of Moby-Dick">
@@ -38,11 +39,33 @@
     }
 
     body {
+      margin: 0;
+      padding: 0;
       text-align: center;
     }
     
     div[property=publisher] {
     margin-bottom: 1em;
+    }
+
+    .grid {
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 15em 1fr;
+      grid-template-rows: 1fr;
+      grid-auto-rows: 1em;
+    }
+    /** vertical scrolling navigation **/
+    .grid > section {
+      grid: 1 / 3;
+      overflow: auto;
+    }
+    /** horizontal scrolling content **/
+    .grid > iframe {
+      grid: 1 / 3;
+      align-self: stretch;
+      justify-self: stretch;
+      border: none;
     }
   </style>
 
@@ -50,7 +73,8 @@
 <body vocab="http://schema.org/" typeof="Book">
   <meta name="bookFormat" content="https://www.w3.org/TR/wpub-vocab/#WebPublication">
 
-  <main>
+  <main class="grid">
+    <section class="sidebar">
     <header class="cover">
       <h1 property="name">Moby-Dick</h1>
       or <h2 property="alternateName">The Whale</h2>
@@ -207,20 +231,16 @@
         <li><a href="html/c136.html#c136">Epilogue</a></li>
      </ol>
     </nav>
+    </section>
+
+    <!-- all links clicked load in this iframe -->
+    <iframe name="content" src="html/cover.html"></iframe>
   </main>
 
   <footer>
    
   </footer>
-  <!-- these should be considered polyfill/shim status scripts -->
+  <!-- this should be considered polyfill/shim status script -->
   <script src="../book.js" defer async></script>
-  <!-- these shims are because book.js uses a Web Component (pub-bar.html)
-       ...and uses .prepend() and append() DOM4 methods -->
-  <!--script src="../dom4.js" defer async></script>
-  <script src="../webcomponents-lite.js" defer async></script-->
-  <!-- end shims -->
-
-  <!-- end shims -->
-
 </body>
 </html>
