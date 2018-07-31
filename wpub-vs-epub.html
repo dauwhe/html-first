@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Comparing EPUB and WP</title>
+	<style>
+	
+	table {
+	border-collapse: collapse;
+	}
+	
+	td {
+	vertical-align: top;
+	border: thin solid red;
+	padding: 2px;
+	}
+	
+	pre {
+	white-space: pre-wrap;
+	}
+	
+	</style>
+</head>
+<body>
+<table>
+	<thead>
+	<tr> <th>Feature</th>	<th>WPUB</th>	<th>EPUB</th> </tr>
+	</thead>
+	<tbody>
+	<tr>
+	<td>Context/
+Namespaces</td>
+	<td><pre>"@context" : ["https://schema.org","https://www.w3.org/ns/wp-context"],
+    "@type"    : "Book"</pre></td>
+	<td><pre>&lt;package xmlns="http://www.idpf.org/2007/opf" 
+    xmlns:dc="http://purl.org/dc/elements/1.1/" version="3.0" 
+    xml:lang="en" unique-identifier="isbn"></pre></td>
+	</tr>
+	<tr> <td>Address</td>	<td><pre>"url"      : "https://publisher.example.org/mobydick"</pre></td>	<td>n/a</td> </tr>
+	<tr> <td>Identifier</td>	<td><pre>"isbn"     : "9780123456789"</pre></td>	<td><pre>
+&lt;metadata>
+    &lt;dc:identifier id="ISBN" 
+     opf:scheme="ISBN">9780123456789&lt;/dc:identifier>
+&lt;manifest></pre></td> </tr>
+	<tr> <td>Title</td>	<td><pre>"name"     : "Moby-Dick"</pre></td>	<td><pre>
+&lt;metadata>
+    &lt;dc:title>Moby-Dick&lt;/dc:title>
+&lt;metadata>
+	</pre></td> </tr>
+	<tr> <td>Reading Order</td>	<td><pre>
+"readingOrder" : [{
+        "@type"          : "PublicationList",
+        "url"            : "html/title.html",
+        "encodingFormat" : "text/html",
+        "name"           : "Title page"
+    },{
+        "@type"          : "PublicationList",
+        "url"            : "html/copyright.html",
+        "encodingFormat" : "text/html",
+        "name"           : "Copyright page"
+    }]
+    </pre></td>	<td><pre>
+&lt;manifest>
+    &lt;item id="copyright" href="html/copyright.html" media-type="text/html" />
+    &lt;item id="title" href="html/title.html" media-type="text/html" />
+&lt;/manifest>    
+    
+&lt;spine>
+    &lt;itemref idref="copyright"/>
+    &lt;itemref idref="title"/>
+&lt;/spine>
+    </pre></td> </tr>
+	<tr> <td>Resources</td>	<td><pre>"resources"  : [
+        "datatypes.html",
+        "datatypes.svg",
+        "datatypes.png",
+        "diff.html",
+        {
+            "@type"             : "PublicationLink",
+            "url"               : "test-utf8.csv",
+            "encodingFormat"    : "text/csv"
+        },{
+            "@type"             : "PublicationLink",
+            "url"               : "test-utf8-bom.csv",
+            "encodingFormat"    : "text/csv"
+        }]</pre></td>	<td><pre>
+&lt;manifest>
+    &lt;item id="htm1" href="datatypes.html" media-type="text/html" />
+    &lt;item id="svg1" href="datatypes.svg" media-type="text/svg" />
+    &lt;item id="png1" href="datatypes.png" media-type="text/csv" />
+    &lt;item id="dif1" href="diff.html" media-type="text/html" />
+    &lt;item id="csv1" href="test-utf8.csv" media-type="text/csv" />
+    &lt;item id="csv2" href="test-utf8-bom.csv" media-type="text/csv" />
+&lt;/manifest>
+    </pre></td> </tr>
+	<tr> <td>Cover image</td>	<td><pre>"resources"  : [{
+        "@type"          : "PublicationLink",
+        "url"            : "whale-image.jpg",
+        "encodingFormat" : "image/jpeg",
+        "rel"            : "https://www.w3.org/ns/wp#cover",
+        "title"          : "Moby Dick attacking hunters",
+        "description"    : "A white whale is seen surfacing 
+        from the water to attack a small whaling boat"
+    }]</pre></td>	<td><pre>
+&lt;metadata>
+    &lt;meta name="cover" content="cover-image" />
+&lt;/metadata>
+
+&lt;manifest>
+    &lt;item id="cover-image" href="whale-image.jpg" 
+     media-type="image/jpeg"/>
+&lt;/manifest>
+</pre></td> </tr>
+	<tr> <td>TOC</td>	<td><pre>"resources"  : [{
+        "@type"      : "PublicationLink",
+        "url"        : "toc_file.html",
+        "rel"        : "contents"
+    }]</pre></td>	<td><pre>&lt;manifest>
+    &lt;item id="toc" href="toc_file.xhtml" 
+     properties="nav" media-type="application/xhtml+xml"/>
+&lt;/manifest></pre></td> </tr>
+	<tr> <td>Modification date</td>	<td><pre>"dateModified" : "2015-12-17"</pre></td>	<td><pre>&lt;meta property="dcterms:modified">2018-05-17T10:19:16Z&lt;/meta></pre></td> </tr>
+
+
+	</tbody>
+</table>
+
+</body>
+</html>
